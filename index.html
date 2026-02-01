@@ -1,0 +1,365 @@
+<index.html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BAJA PRO SERVICES | Enterprise System</title>
+<meta name="description" content="BAJA PRO SERVICES Enterprise Lead System. Residential, Commercial and Industrial Services.">
+
+<link rel="icon" href="favicon.png">
+
+<!-- EMAILJS SDK -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<style>
+:root {
+  --primary:#0ea5e9;
+  --accent:#22c55e;
+  --dark:#020617;
+  --bg:#f1f5f9;
+}
+
+body {
+  margin:0;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:var(--bg);
+}
+
+.hero {
+  background:url('hero.png') center/cover no-repeat;
+  min-height:260px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(2,6,23,.7);
+}
+
+.hero-content {
+  position:relative;
+  color:white;
+  text-align:center;
+}
+
+.hero-content h1 {
+  margin:0;
+  font-size:32px;
+  letter-spacing:2px;
+}
+
+.hero-content p {
+  margin-top:8px;
+  letter-spacing:1px;
+  color:#bae6fd;
+}
+
+.container {
+  max-width:600px;
+  background:white;
+  margin:-50px auto 40px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.2);
+  overflow:hidden;
+}
+
+.form-body {
+  padding:25px;
+}
+
+.section-title {
+  background:#f8fafc;
+  padding:10px;
+  border-left:4px solid var(--primary);
+  border-radius:8px;
+  font-weight:bold;
+  margin:20px 0 10px;
+}
+
+input, textarea, select {
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #cbd5f5;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.services-list {
+  max-height:280px;
+  overflow-y:auto;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:10px;
+  background:#f8fafc;
+}
+
+.service-item {
+  display:flex;
+  align-items:center;
+  font-size:14px;
+  padding:6px 0;
+}
+
+.service-item input {
+  margin-right:10px;
+  width:18px;
+  height:18px;
+}
+
+#fotos {
+  border:2px dashed var(--primary);
+  padding:14px;
+  border-radius:12px;
+  background:#ecfeff;
+  cursor:pointer;
+}
+
+.preview {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
+
+.preview img {
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:10px;
+  border:2px solid var(--primary);
+}
+
+.button-container {
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-top:20px;
+}
+
+.btn {
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  font-weight:bold;
+  font-size:16px;
+  color:white;
+  cursor:pointer;
+  transition:.2s ease;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+.btn-tech {
+  background:linear-gradient(135deg,#0ea5e9,#0284c7);
+}
+
+.btn-sales {
+  background:linear-gradient(135deg,#22c55e,#15803d);
+}
+
+.footer {
+  text-align:center;
+  font-size:12px;
+  color:#64748b;
+  padding:15px;
+  background:#020617;
+  color:#94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>BAJA PRO SERVICES</h1>
+    <p>Residential · Commercial · Industrial Solutions</p>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="container">
+<div class="form-body">
+
+<div class="section-title">CLIENT INFORMATION</div>
+
+<input id="nombre" placeholder="Full Name">
+<input id="tel" placeholder="Phone Number">
+<input id="email" value="servicesbajapro@gmail.com">
+<input id="dir" placeholder="Address">
+
+<select id="segment">
+  <option>Residential</option>
+  <option>Commercial</option>
+  <option>Industrial</option>
+</select>
+
+<div class="section-title">SERVICES</div>
+
+<div class="services-list" id="servicios">
+<label class="service-item"><input type="checkbox" value="01. Air Conditioner Maintenance">01. Air Conditioner Maintenance</label>
+<label class="service-item"><input type="checkbox" value="02. Air Conditioner Installation">02. Air Conditioner Installation</label>
+<label class="service-item"><input type="checkbox" value="03. Interior & Exterior Painting">03. Interior & Exterior Painting</label>
+<label class="service-item"><input type="checkbox" value="04. Roof Waterproofing">04. Roof Waterproofing</label>
+<label class="service-item"><input type="checkbox" value="05. Floor Installation">05. Floor Installation</label>
+<label class="service-item"><input type="checkbox" value="06. Electrical Repairs">06. Electrical Repairs</label>
+<label class="service-item"><input type="checkbox" value="07. New Electrical Installations">07. New Electrical Installations</label>
+<label class="service-item"><input type="checkbox" value="08. Plumbing Services">08. Plumbing Services</label>
+<label class="service-item"><input type="checkbox" value="09. Security Camera Installation">09. Security Camera Installation</label>
+<label class="service-item"><input type="checkbox" value="10. Electric Fence Installation">10. Electric Fence Installation</label>
+<label class="service-item"><input type="checkbox" value="11. Aluminum Doors & Windows">11. Aluminum Doors & Windows</label>
+<label class="service-item"><input type="checkbox" value="12. Metalwork & Welding">12. Metalwork & Welding</label>
+<label class="service-item"><input type="checkbox" value="13. Drywall & Cement Board">13. Drywall & Cement Board</label>
+<label class="service-item"><input type="checkbox" value="14. General Carpentry">14. General Carpentry</label>
+<label class="service-item"><input type="checkbox" value="15. Blinds & Curtains">15. Blinds & Curtains</label>
+<label class="service-item"><input type="checkbox" value="16. Leak Repairs">16. Leak Repairs</label>
+<label class="service-item"><input type="checkbox" value="17. Water Heater Installation & Repair">17. Water Heater Installation & Repair</label>
+<label class="service-item"><input type="checkbox" value="18. General Maintenance">18. General Maintenance</label>
+<label class="service-item"><input type="checkbox" value="19. Solar Panel Installation">19. Solar Panel Installation</label>
+<label class="service-item"><input type="checkbox" value="20. Post-Construction Deep Cleaning">20. Post-Construction Deep Cleaning</label>
+</div>
+
+<div class="section-title">PROJECT DESCRIPTION</div>
+<textarea id="notas" placeholder="Describe what you need..."></textarea>
+
+<div class="section-title">UPLOAD PHOTOS</div>
+<input type="file" id="fotos" multiple accept="image/*">
+<div class="preview" id="preview"></div>
+
+<div class="button-container">
+<button class="btn btn-tech" onclick="submitLead('526121673200')">
+📞 SEND TO TECH + CRM
+</button>
+<button class="btn btn-tech" onclick="submitLead('526122198325')">
+📞 SEND TO TECH + CRM
+</button>
+
+<button class="btn btn-sales" onclick="submitLead('526122311422')">
+💼 SEND TO SALES + CRM
+</button>
+</div>
+
+</div>
+</div>
+
+<div class="footer">
+© BAJA PRO SERVICES — Enterprise Lead & CRM System 2026
+</div>
+
+<!-- ENTERPRISE SCRIPT -->
+<script>
+/* ==============================
+   CONFIG
+================================ */
+const EMAIL_PUBLIC_KEY = "VOVpCa1MrQAPKa6C";
+const EMAIL_SERVICE_ID = "service_6djsb5o";
+const EMAIL_TEMPLATE_ID = "template_df723j8";
+const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxK70nes-a2sB4e_lrVjGI-3MBw-QiC_cA91ygkCGIbsPjEBLflfzo1Fh0OLjW_lpXKyQ/exec";
+
+/* ==============================
+   INIT EMAILJS
+================================ */
+(function(){
+  emailjs.init(EMAIL_PUBLIC_KEY);
+})();
+
+/* ==============================
+   PHOTO PREVIEW
+================================ */
+document.getElementById('fotos').addEventListener('change', e => {
+  const preview = document.getElementById('preview');
+  preview.innerHTML = "";
+  [...e.target.files].slice(0,5).forEach(file => {
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(file);
+    preview.appendChild(img);
+  });
+});
+
+/* ==============================
+   MAIN SUBMIT FUNCTION
+================================ */
+function submitLead(numeroDestino) {
+  const nombre = document.getElementById('nombre').value.trim();
+  const tel = document.getElementById('tel').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const direccion = document.getElementById('dir').value.trim();
+  const segmento = document.getElementById('segment').value;
+  const notas = document.getElementById('notas').value.trim();
+  const fotosCount = document.getElementById('fotos').files.length;
+
+  if (!nombre || !tel) {
+    alert("⚠️ Name and Phone are required");
+    return;
+  }
+
+  const servicios = [...document.querySelectorAll('#servicios input:checked')]
+    .map(i => i.value)
+    .join(", ");
+
+  /* VARIABLES PLANTILLA
+     {{nombre}}
+     {{telefono}}
+     {{email}}
+     {{direccion}}
+     {{segmento}}
+     {{servicios}}
+     {{notas}}
+  */
+  const data = {
+    nombre,
+    telefono: tel,
+    email,
+    direccion,
+    segmento,
+    servicios,
+    notas: notas || "N/A",
+    fotos: fotosCount
+  };
+
+  /* ==============================
+     GOOGLE SHEETS CRM
+================================ */
+  fetch(SHEET_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  /* ==============================
+     EMAIL NOTIFICATION
+================================ */
+  emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, data)
+    .then(() => console.log("Email sent"))
+    .catch(err => console.error("Email error:", err));
+
+  /* ==============================
+     WHATSAPP
+================================ */
+  const msg = `*BAJA PRO SERVICES*\n\n` +
+              `Name: ${data.nombre}\n` +
+              `Phone: ${data.telefono}\n` +
+              `Email: ${data.email}\n` +
+              `Segment: ${data.segmento}\n\n` +
+              `Services:\n${data.servicios || "N/A"}\n\n` +
+              `Notes:\n${data.notas}\n\n` +
+              `Photos attached: ${data.fotos}`;
+
+  window.open(`https://wa.me/${numeroDestino}?text=${encodeURIComponent(msg)}`, "_blank");
+}
+</script>
+
+</body>
+</html>
