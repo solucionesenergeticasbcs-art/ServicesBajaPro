@@ -26,46 +26,44 @@ body {
   background:var(--bg);
 }
 
+/* ======================
+   HERO IMAGE ONLY
+====================== */
 .hero {
   background:url('hero.png') center/cover no-repeat;
-  min-height:260px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  min-height:300px;
   position:relative;
 }
 
-.hero::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(2,6,23,.7);
-}
-
-.hero-content {
-  position:relative;
-  color:white;
+/* Title BELOW hero */
+.hero-title {
   text-align:center;
+  margin-top:40px;
+  margin-bottom:-30px;
 }
 
-.hero-content h1 {
+.hero-title h1 {
   margin:0;
-  font-size:32px;
+  font-size:34px;
   letter-spacing:2px;
+  color:#020617;
 }
 
-.hero-content p {
+.hero-title p {
   margin-top:8px;
   letter-spacing:1px;
-  color:#bae6fd;
+  color:#0369a1;
+  font-weight:500;
 }
 
-/* LANGUAGE SWITCH */
+/* ======================
+   LANGUAGE SWITCH
+====================== */
 .lang-switch {
   position:absolute;
-  top:15px;
-  right:15px;
-  z-index:10;
+  top:20px;
+  right:20px;
+  z-index:20;
 }
 
 .lang-switch button {
@@ -73,17 +71,19 @@ body {
   border:none;
   border-radius:20px;
   padding:6px 14px;
-  margin:0 4px;
+  margin:0 5px;
   cursor:pointer;
   font-weight:bold;
   font-size:12px;
 }
 
-/* FORM */
+/* ======================
+   FORM
+====================== */
 .container {
   max-width:600px;
   background:white;
-  margin:-50px auto 40px;
+  margin:-20px auto 40px;
   border-radius:20px;
   box-shadow:0 20px 40px rgba(0,0,0,.2);
   overflow:hidden;
@@ -111,6 +111,7 @@ input, textarea, select {
   margin-bottom:12px;
 }
 
+/* SERVICES */
 .services-list {
   max-height:280px;
   overflow-y:auto;
@@ -202,19 +203,19 @@ input, textarea, select {
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
+<!-- LANGUAGE SWITCH -->
+<div class="lang-switch">
+  <button onclick="setLang('en')">🇺🇸 English</button>
+  <button onclick="setLang('es')">🇲🇽 Español</button>
+</div>
 
-  <!-- LANGUAGE SWITCH -->
-  <div class="lang-switch">
-    <button onclick="setLang('en')">🇺🇸 English</button>
-    <button onclick="setLang('es')">🇲🇽 Español</button>
-  </div>
+<!-- HERO IMAGE ONLY -->
+<div class="hero"></div>
 
-  <div class="hero-content">
-    <h1>BAJA PRO SERVICES</h1>
-    <p id="heroSub">Residential · Commercial · Industrial Solutions</p>
-  </div>
+<!-- TITLE BELOW HERO -->
+<div class="hero-title">
+  <h1>BAJA PRO SERVICES</h1>
+  <p id="heroSub">Residential · Commercial · Industrial Solutions</p>
 </div>
 
 <!-- FORM -->
@@ -263,12 +264,14 @@ input, textarea, select {
 <div class="preview" id="preview"></div>
 
 <div class="button-container">
-<button class="btn btn-tech" id="btnTech" onclick="submitLead('526121673200')">
+<button class="btn btn-tech" id="btnTech1" onclick="submitLead('526121673200')">
 📞 SEND TO TECH + CRM
 </button>
-<button class="btn btn-tech" id="btnTech" onclick="submitLead('526122168325')">
+
+<button class="btn btn-tech" id="btnTech2" onclick="submitLead('526122198325')">
 📞 SEND TO TECH + CRM
 </button>
+
 <button class="btn btn-sales" id="btnSales" onclick="submitLead('526122311422')">
 💼 SEND TO SALES + CRM
 </button>
@@ -281,24 +284,20 @@ input, textarea, select {
 © BAJA PRO SERVICES — Enterprise Lead & CRM System 2026
 </div>
 
-<!-- ENTERPRISE SCRIPT -->
+<!-- ======================
+   ENTERPRISE SCRIPT
+====================== -->
 <script>
-/* ==============================
-   CONFIG
-================================ */
+/* CONFIG */
 const EMAIL_PUBLIC_KEY = "VOVpCa1MrQAPKa6C";
 const EMAIL_SERVICE_ID = "service_6djsb5o";
 const EMAIL_TEMPLATE_ID = "template_df723j8";
 const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxK70nes-a2sB4e_lrVjGI-3MBw-QiC_cA91ygkCGIbsPjEBLflfzo1Fh0OLjW_lpXKyQ/exec";
 
-/* ==============================
-   INIT EMAILJS
-================================ */
+/* INIT EMAILJS */
 emailjs.init(EMAIL_PUBLIC_KEY);
 
-/* ==============================
-   TRANSLATIONS
-================================ */
+/* TRANSLATIONS */
 let currentLang = "en";
 
 const translations = {
@@ -345,7 +344,8 @@ function setLang(lang) {
   document.getElementById("dir").placeholder = translations[lang].address;
   document.getElementById("notas").placeholder = translations[lang].notes;
 
-  document.getElementById("btnTech").innerText = translations[lang].techBtn;
+  document.getElementById("btnTech1").innerText = translations[lang].techBtn;
+  document.getElementById("btnTech2").innerText = translations[lang].techBtn;
   document.getElementById("btnSales").innerText = translations[lang].salesBtn;
 
   const segment = document.getElementById("segment");
@@ -357,9 +357,7 @@ function setLang(lang) {
   });
 }
 
-/* ==============================
-   PHOTO PREVIEW
-================================ */
+/* PHOTO PREVIEW */
 document.getElementById('fotos').addEventListener('change', e => {
   const preview = document.getElementById('preview');
   preview.innerHTML = "";
@@ -370,9 +368,7 @@ document.getElementById('fotos').addEventListener('change', e => {
   });
 });
 
-/* ==============================
-   MAIN SUBMIT FUNCTION
-================================ */
+/* SUBMIT */
 function submitLead(numeroDestino) {
   const nombre = document.getElementById('nombre').value.trim();
   const tel = document.getElementById('tel').value.trim();
@@ -402,7 +398,7 @@ function submitLead(numeroDestino) {
     fotos: fotosCount
   };
 
-  /* GOOGLE SHEETS CRM */
+  /* GOOGLE SHEETS */
   fetch(SHEET_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -425,7 +421,7 @@ function submitLead(numeroDestino) {
   window.open(`https://wa.me/${numeroDestino}?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
-/* DEFAULT LANGUAGE */
+/* DEFAULT */
 setLang("en");
 </script>
 
