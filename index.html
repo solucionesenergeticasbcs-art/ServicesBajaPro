@@ -60,6 +60,26 @@ body {
   color:#bae6fd;
 }
 
+/* LANGUAGE SWITCH */
+.lang-switch {
+  position:absolute;
+  top:15px;
+  right:15px;
+  z-index:10;
+}
+
+.lang-switch button {
+  background:rgba(255,255,255,0.9);
+  border:none;
+  border-radius:20px;
+  padding:6px 14px;
+  margin:0 4px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:12px;
+}
+
+/* FORM */
 .container {
   max-width:600px;
   background:white;
@@ -113,6 +133,7 @@ input, textarea, select {
   height:18px;
 }
 
+/* PHOTOS */
 #fotos {
   border:2px dashed var(--primary);
   padding:14px;
@@ -136,6 +157,7 @@ input, textarea, select {
   border:2px solid var(--primary);
 }
 
+/* BUTTONS */
 .button-container {
   display:flex;
   flex-direction:column;
@@ -171,7 +193,6 @@ input, textarea, select {
 .footer {
   text-align:center;
   font-size:12px;
-  color:#64748b;
   padding:15px;
   background:#020617;
   color:#94a3b8;
@@ -183,9 +204,16 @@ input, textarea, select {
 
 <!-- HERO -->
 <div class="hero">
+
+  <!-- LANGUAGE SWITCH -->
+  <div class="lang-switch">
+    <button onclick="setLang('en')">🇺🇸 English</button>
+    <button onclick="setLang('es')">🇲🇽 Español</button>
+  </div>
+
   <div class="hero-content">
     <h1>BAJA PRO SERVICES</h1>
-    <p>Residential · Commercial · Industrial Solutions</p>
+    <p id="heroSub">Residential · Commercial · Industrial Solutions</p>
   </div>
 </div>
 
@@ -193,20 +221,16 @@ input, textarea, select {
 <div class="container">
 <div class="form-body">
 
-<div class="section-title">CLIENT INFORMATION</div>
+<div class="section-title" id="titleClient">CLIENT INFORMATION</div>
 
 <input id="nombre" placeholder="Full Name">
 <input id="tel" placeholder="Phone Number">
 <input id="email" value="servicesbajapro@gmail.com">
 <input id="dir" placeholder="Address">
 
-<select id="segment">
-  <option>Residential</option>
-  <option>Commercial</option>
-  <option>Industrial</option>
-</select>
+<select id="segment"></select>
 
-<div class="section-title">SERVICES</div>
+<div class="section-title" id="titleServices">SERVICES</div>
 
 <div class="services-list" id="servicios">
 <label class="service-item"><input type="checkbox" value="01. Air Conditioner Maintenance">01. Air Conditioner Maintenance</label>
@@ -231,7 +255,7 @@ input, textarea, select {
 <label class="service-item"><input type="checkbox" value="20. Post-Construction Deep Cleaning">20. Post-Construction Deep Cleaning</label>
 </div>
 
-<div class="section-title">PROJECT DESCRIPTION</div>
+<div class="section-title" id="titleNotes">PROJECT DESCRIPTION</div>
 <textarea id="notas" placeholder="Describe what you need..."></textarea>
 
 <div class="section-title">UPLOAD PHOTOS</div>
@@ -239,14 +263,11 @@ input, textarea, select {
 <div class="preview" id="preview"></div>
 
 <div class="button-container">
-<button class="btn btn-tech" onclick="submitLead('526121673200')">
-📞 SEND TO TECH + CRM
-</button>
-<button class="btn btn-tech" onclick="submitLead('526122198325')">
+<button class="btn btn-tech" id="btnTech" onclick="submitLead('526121673200')">
 📞 SEND TO TECH + CRM
 </button>
 
-<button class="btn btn-sales" onclick="submitLead('526122311422')">
+<button class="btn btn-sales" id="btnSales" onclick="submitLead('526122311422')">
 💼 SEND TO SALES + CRM
 </button>
 </div>
@@ -271,9 +292,68 @@ const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxK70nes-a2sB4e_
 /* ==============================
    INIT EMAILJS
 ================================ */
-(function(){
-  emailjs.init(EMAIL_PUBLIC_KEY);
-})();
+emailjs.init(EMAIL_PUBLIC_KEY);
+
+/* ==============================
+   TRANSLATIONS
+================================ */
+let currentLang = "en";
+
+const translations = {
+  en: {
+    heroSub: "Residential · Commercial · Industrial Solutions",
+    titleClient: "CLIENT INFORMATION",
+    titleServices: "SERVICES",
+    titleNotes: "PROJECT DESCRIPTION",
+    name: "Full Name",
+    phone: "Phone Number",
+    address: "Address",
+    notes: "Describe what you need...",
+    techBtn: "📞 SEND TO TECH + CRM",
+    salesBtn: "💼 SEND TO SALES + CRM",
+    alert: "⚠️ Name and Phone are required",
+    segment: ["Residential", "Commercial", "Industrial"]
+  },
+  es: {
+    heroSub: "Soluciones Residenciales · Comerciales · Industriales",
+    titleClient: "DATOS DEL CLIENTE",
+    titleServices: "SERVICIOS",
+    titleNotes: "DESCRIPCIÓN DEL PROYECTO",
+    name: "Nombre Completo",
+    phone: "Teléfono",
+    address: "Dirección",
+    notes: "Describe lo que necesitas...",
+    techBtn: "📞 ENVIAR A TÉCNICO + CRM",
+    salesBtn: "💼 ENVIAR A VENTAS + CRM",
+    alert: "⚠️ Nombre y Teléfono son obligatorios",
+    segment: ["Residencial", "Comercial", "Industrial"]
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+
+  document.getElementById("heroSub").innerText = translations[lang].heroSub;
+  document.getElementById("titleClient").innerText = translations[lang].titleClient;
+  document.getElementById("titleServices").innerText = translations[lang].titleServices;
+  document.getElementById("titleNotes").innerText = translations[lang].titleNotes;
+
+  document.getElementById("nombre").placeholder = translations[lang].name;
+  document.getElementById("tel").placeholder = translations[lang].phone;
+  document.getElementById("dir").placeholder = translations[lang].address;
+  document.getElementById("notas").placeholder = translations[lang].notes;
+
+  document.getElementById("btnTech").innerText = translations[lang].techBtn;
+  document.getElementById("btnSales").innerText = translations[lang].salesBtn;
+
+  const segment = document.getElementById("segment");
+  segment.innerHTML = "";
+  translations[lang].segment.forEach(s => {
+    const opt = document.createElement("option");
+    opt.textContent = s;
+    segment.appendChild(opt);
+  });
+}
 
 /* ==============================
    PHOTO PREVIEW
@@ -301,7 +381,7 @@ function submitLead(numeroDestino) {
   const fotosCount = document.getElementById('fotos').files.length;
 
   if (!nombre || !tel) {
-    alert("⚠️ Name and Phone are required");
+    alert(translations[currentLang].alert);
     return;
   }
 
@@ -309,15 +389,6 @@ function submitLead(numeroDestino) {
     .map(i => i.value)
     .join(", ");
 
-  /* VARIABLES PLANTILLA
-     {{nombre}}
-     {{telefono}}
-     {{email}}
-     {{direccion}}
-     {{segmento}}
-     {{servicios}}
-     {{notas}}
-  */
   const data = {
     nombre,
     telefono: tel,
@@ -329,25 +400,17 @@ function submitLead(numeroDestino) {
     fotos: fotosCount
   };
 
-  /* ==============================
-     GOOGLE SHEETS CRM
-================================ */
+  /* GOOGLE SHEETS CRM */
   fetch(SHEET_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   });
 
-  /* ==============================
-     EMAIL NOTIFICATION
-================================ */
-  emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, data)
-    .then(() => console.log("Email sent"))
-    .catch(err => console.error("Email error:", err));
+  /* EMAIL */
+  emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, data);
 
-  /* ==============================
-     WHATSAPP
-================================ */
+  /* WHATSAPP */
   const msg = `*BAJA PRO SERVICES*\n\n` +
               `Name: ${data.nombre}\n` +
               `Phone: ${data.telefono}\n` +
@@ -359,6 +422,9 @@ function submitLead(numeroDestino) {
 
   window.open(`https://wa.me/${numeroDestino}?text=${encodeURIComponent(msg)}`, "_blank");
 }
+
+/* DEFAULT LANGUAGE */
+setLang("en");
 </script>
 
 </body>
