@@ -16,18 +16,84 @@
   --bg:#f1f5f9;
 }
 
-body { margin:0; font-family:'Segoe UI', Arial, sans-serif; background:var(--bg); color: var(--dark); }
+body { 
+  margin:0; 
+  font-family:'Segoe UI', Arial, sans-serif; 
+  background:var(--bg); 
+  color: var(--dark); 
+}
 
-.hero { background:url('hero.png') center/cover no-repeat; min-height:300px; position:relative; }
+/* HERO SECTION AJUSTADO */
+.hero { 
+  background: url('hero.png') center/cover no-repeat; 
+  width: 100%;
+  aspect-ratio: 16 / 6; 
+  min-height: 250px;
+  position: relative;
+}
 
-.hero-title { text-align:center; margin-top:40px; margin-bottom:-20px; }
-.hero-title h1 { margin:0; font-size:34px; letter-spacing:2px; color:#020617; }
-.hero-title p { margin-top:8px; letter-spacing:1px; color:#0369a1; font-weight:500; }
+@media (max-width: 600px) {
+  .hero { aspect-ratio: 4 / 3; min-height: 200px; }
+}
 
+.hero-title { 
+  text-align: center; 
+  padding: 30px 20px 10px; 
+  background: white; 
+}
+
+.hero-title h1 { 
+  margin: 0; 
+  font-size: clamp(24px, 5vw, 34px); 
+  letter-spacing: 2px; 
+  color: #020617; 
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hero-title p { 
+  margin-top: 8px; 
+  letter-spacing: 1px; 
+  color: #0369a1; 
+  font-weight: 500; 
+  font-size: 14px;
+}
+
+/* BOTÓN FLOTANTE DE LLAMADA */
+.btn-call-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 999;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-call-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.btn-call-float svg {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+}
+
+/* FORMULARIO Y CONTENEDOR */
 .lang-switch { position:absolute; top:20px; right:20px; z-index:20; }
 .lang-switch button { background:rgba(255,255,255,0.9); border:none; border-radius:20px; padding:8px 16px; margin:0 5px; cursor:pointer; font-weight:bold; font-size:12px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-.container { max-width:600px; background:white; margin:40px auto; border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,.15); overflow:hidden; }
+.container { max-width:600px; background:white; margin:20px auto 40px; border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,.15); overflow:hidden; }
 .form-body { padding:25px; }
 
 .section-title { background:#f8fafc; padding:12px; border-left:4px solid var(--primary); border-radius:8px; font-weight:bold; margin:25px 0 12px; font-size: 14px; text-transform: uppercase; }
@@ -54,6 +120,10 @@ input, textarea, select { width:100%; padding:14px; border-radius:12px; border:1
 </style>
 </head>
 <body>
+
+<a href="tel:+526121673200" class="btn-call-float" title="Call Now">
+  <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
+</a>
 
 <div class="lang-switch">
   <button onclick="setLang('en')">🇺🇸 English</button>
@@ -111,7 +181,6 @@ input, textarea, select { width:100%; padding:14px; border-radius:12px; border:1
 const EMAIL_PUBLIC_KEY = "VOVpCa1MrQAPKa6C";
 const EMAIL_SERVICE_ID = "service_6djsb5o";
 const EMAIL_TEMPLATE_ID = "template_df723j8";
-// CORREGIDO: URL con comillas
 const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxRRWx13cQNr9jUF3__ScKxuJ0kigzBP-8KrKpwmQSU9dYoWdrG5FUNq3gxqR6MyDZkzA/exec";
 
 emailjs.init(EMAIL_PUBLIC_KEY);
@@ -236,7 +305,6 @@ async function submitLead(btnElement, numeroDestino) {
     idioma: currentLang
   };
 
-  // Feedback visual
   btnElement.innerText = t.saving;
   btnElement.disabled = true;
 
@@ -268,4 +336,3 @@ setLang("en");
 
 </body>
 </html>
-
