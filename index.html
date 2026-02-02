@@ -1,4 +1,4 @@
-<index.html>
+<index. html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -16,12 +16,7 @@
   --bg:#f1f5f9;
 }
 
-body { 
-  margin:0; 
-  font-family:'Segoe UI', Arial, sans-serif; 
-  background:var(--bg); 
-  color: var(--dark); 
-}
+body { margin:0; font-family:'Segoe UI', Arial, sans-serif; background:var(--bg); color: var(--dark); }
 
 /* HERO SECTION AJUSTADO */
 .hero { 
@@ -36,62 +31,23 @@ body {
   .hero { aspect-ratio: 4 / 3; min-height: 200px; }
 }
 
-.hero-title { 
-  text-align: center; 
-  padding: 30px 20px 10px; 
-  background: white; 
-}
+.hero-title { text-align: center; padding: 30px 20px 10px; background: white; }
+.hero-title h1 { margin: 0; font-size: clamp(24px, 5vw, 34px); letter-spacing: 2px; color: #020617; font-weight: 800; text-transform: uppercase; }
+.hero-title p { margin-top: 8px; letter-spacing: 1px; color: #0369a1; font-weight: 500; font-size: 14px; }
 
-.hero-title h1 { 
-  margin: 0; 
-  font-size: clamp(24px, 5vw, 34px); 
-  letter-spacing: 2px; 
-  color: #020617; 
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.hero-title p { 
-  margin-top: 8px; 
-  letter-spacing: 1px; 
-  color: #0369a1; 
-  font-weight: 500; 
-  font-size: 14px;
-}
-
-/* BOTÓN FLOTANTE DE LLAMADA */
+/* BOTÓN FLOTANTE */
 .btn-call-float {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  background-color: var(--accent);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  z-index: 999;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+  background-color: var(--accent); color: white; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 999; text-decoration: none; transition: 0.3s;
 }
+.btn-call-float:hover { transform: scale(1.1); }
+.btn-call-float svg { width: 30px; height: 30px; fill: currentColor; }
 
-.btn-call-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-}
-
-.btn-call-float svg {
-  width: 30px;
-  height: 30px;
-  fill: currentColor;
-}
-
-/* FORMULARIO Y CONTENEDOR */
+/* FORMULARIO */
 .lang-switch { position:absolute; top:20px; right:20px; z-index:20; }
-.lang-switch button { background:rgba(255,255,255,0.9); border:none; border-radius:20px; padding:8px 16px; margin:0 5px; cursor:pointer; font-weight:bold; font-size:12px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.lang-switch button { background:rgba(255,255,255,0.9); border:none; border-radius:20px; padding:8px 16px; margin:0 5px; cursor:pointer; font-weight:bold; font-size:12px; }
 
 .container { max-width:600px; background:white; margin:20px auto 40px; border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,.15); overflow:hidden; }
 .form-body { padding:25px; }
@@ -102,16 +58,15 @@ input, textarea, select { width:100%; padding:14px; border-radius:12px; border:1
 
 .services-list { max-height:280px; overflow-y:auto; border:1px solid #e2e8f0; border-radius:12px; padding:10px; background:#f8fafc; }
 .service-item { display:flex; align-items:center; font-size:14px; padding:8px 0; border-bottom: 1px solid #f1f5f9; cursor: pointer; }
-.service-item input { margin-right:12px; width:18px; height:18px; cursor: pointer; }
+.service-item input { margin-right:12px; width:18px; height:18px; }
 
-#fotos { border:2px dashed var(--primary); padding:20px; border-radius:12px; background:#ecfeff; cursor:pointer; text-align: center; width: 100%; }
+#fotos { border:2px dashed var(--primary); padding:20px; border-radius:12px; background:#ecfeff; text-align: center; width: 100%; cursor: pointer; }
 .preview { display:flex; flex-wrap:wrap; gap:8px; margin-top:15px; }
 .preview img { width:80px; height:80px; object-fit:cover; border-radius:10px; border:2px solid var(--primary); }
 
 .button-container { display:flex; flex-direction:column; gap:14px; margin-top:30px; }
-.btn { padding:18px; border:none; border-radius:14px; font-weight:bold; font-size:15px; color:white; cursor:pointer; transition:.3s ease; box-shadow:0 8px 15px rgba(0,0,0,0.1); text-transform: uppercase; }
-.btn:hover { transform:translateY(-3px); box-shadow:0 12px 25px rgba(0,0,0,0.2); opacity: 0.9; }
-.btn:disabled { background: #94a3b8 !important; cursor: not-allowed; transform: none; opacity: 0.6; }
+.btn { padding:18px; border:none; border-radius:14px; font-weight:bold; font-size:15px; color:white; cursor:pointer; transition:.3s ease; text-transform: uppercase; }
+.btn:hover { transform:translateY(-3px); opacity: 0.9; }
 
 .btn-tech { background: linear-gradient(135deg, #0ea5e9, #0369a1); }
 .btn-sales { background: linear-gradient(135deg, #22c55e, #15803d); }
@@ -121,13 +76,13 @@ input, textarea, select { width:100%; padding:14px; border-radius:12px; border:1
 </head>
 <body>
 
-<a href="tel:+526121673200" class="btn-call-float" title="Call Now">
+<a href="tel:+526121673200" class="btn-call-float">
   <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
 </a>
 
 <div class="lang-switch">
-  <button onclick="setLang('en')">🇺🇸 English</button>
-  <button onclick="setLang('es')">🇲🇽 Español</button>
+  <button onclick="setLang('en')">🇺🇸 EN</button>
+  <button onclick="setLang('es')">🇲🇽 ES</button>
 </div>
 
 <div class="hero"></div>
@@ -139,7 +94,6 @@ input, textarea, select { width:100%; padding:14px; border-radius:12px; border:1
 
 <div class="container">
 <div class="form-body">
-
   <div class="section-title" id="titleClient">CLIENT INFORMATION</div>
   <input id="nombre" placeholder="Full Name">
   <input id="tel" placeholder="Phone Number">
@@ -151,30 +105,21 @@ input, textarea, select { width:100%; padding:14px; border-radius:12px; border:1
   <div class="services-list" id="servicios"></div>
 
   <div class="section-title" id="titleNotes">PROJECT DESCRIPTION</div>
-  <textarea id="notas" rows="4" placeholder="Describe what you need..."></textarea>
+  <textarea id="notas" rows="4" placeholder="Describe..."></textarea>
 
   <div class="section-title" id="titlePhotos">UPLOAD PHOTOS</div>
   <input type="file" id="fotos" multiple accept="image/*">
   <div class="preview" id="preview"></div>
 
   <div class="button-container">
-    <button class="btn btn-tech" id="btnTech1" onclick="submitLead(this, '+526121673200')">
-      📞 SEND TO TECH 1 + CRM
-    </button>
-    <button class="btn btn-tech" id="btnTech2" onclick="submitLead(this, '+526122198325')">
-      📞 SEND TO TECH 2 + CRM
-    </button>
-    <button class="btn btn-sales" id="btnSales" onclick="submitLead(this, '+526122311422')">
-      💼 SEND TO SALES + CRM
-    </button>
+    <button class="btn btn-tech" id="btnTech1" onclick="submitLead(this, '+526121673200')">📞 TECH 1 + CRM</button>
+    <button class="btn btn-tech" id="btnTech2" onclick="submitLead(this, '+526122198325')">📞 TECH 2 + CRM</button>
+    <button class="btn btn-sales" id="btnSales" onclick="submitLead(this, '+526122311422')">💼 SALES + CRM</button>
   </div>
-
 </div>
 </div>
 
-<div class="footer">
-© BAJA PRO SERVICES — Enterprise Lead & CRM System 2026
-</div>
+<div class="footer">© BAJA PRO SERVICES 2026</div>
 
 <script>
 /* CONFIG */
@@ -183,6 +128,10 @@ const EMAIL_SERVICE_ID = "service_6djsb5o";
 const EMAIL_TEMPLATE_ID = "template_df723j8";
 const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxRRWx13cQNr9jUF3__ScKxuJ0kigzBP-8KrKpwmQSU9dYoWdrG5FUNq3gxqR6MyDZkzA/exec";
 
+// TELEGRAM CONFIG
+const TELEGRAM_TOKEN = "8513353497:AAExMzccj_v4Owo4Z6JzOKUO5ZhIMdctLGA";
+const TELEGRAM_CHAT_ID = "8457518723";
+
 emailjs.init(EMAIL_PUBLIC_KEY);
 
 let currentLang = "en";
@@ -190,71 +139,37 @@ let currentLang = "en";
 const translations = {
   en: {
     heroSub: "Residential · Commercial · Industrial Solutions",
-    titleClient: "CLIENT INFORMATION",
-    titleServices: "SERVICES",
-    titleNotes: "PROJECT DESCRIPTION",
-    titlePhotos: "UPLOAD PHOTOS",
-    name: "Full Name", phone: "Phone Number", address: "Address",
-    notes: "Describe what you need...",
-    techBtn: "📞 SEND TO TECH",
-    salesBtn: "💼 SEND TO SALES",
-    alert: "⚠️ Name and Phone are required",
-    saving: "⌛ SAVING TO CRM...",
+    titleClient: "CLIENT INFORMATION", titleServices: "SERVICES", titleNotes: "PROJECT DESCRIPTION", titlePhotos: "UPLOAD PHOTOS",
+    alert: "⚠️ Name and Phone are required", saving: "⌛ SAVING...",
     segment: ["Residential", "Commercial", "Industrial"],
-    waHeader: "*BAJA PRO SERVICES - NEW LEAD*",
-    waName: "Name", waPhone: "Phone", waSegment: "Segment",
-    waServices: "Services", waPhotos: "Photos"
+    waHeader: "*BAJA PRO SERVICES - NEW LEAD*"
   },
   es: {
     heroSub: "Soluciones Residenciales · Comerciales · Industriales",
-    titleClient: "DATOS DEL CLIENTE",
-    titleServices: "SERVICIOS",
-    titleNotes: "DESCRIPCIÓN DEL PROYECTO",
-    titlePhotos: "SUBIR FOTOS",
-    name: "Nombre Completo", phone: "Teléfono", address: "Dirección",
-    notes: "Describe lo que necesitas...",
-    techBtn: "📞 ENVIAR A TÉCNICO",
-    salesBtn: "💼 ENVIAR A VENTAS",
-    alert: "⚠️ Nombre y Teléfono son obligatorios",
-    saving: "⌛ GUARDANDO EN CRM...",
+    titleClient: "DATOS DEL CLIENTE", titleServices: "SERVICIOS", titleNotes: "DESCRIPCIÓN DEL PROYECTO", titlePhotos: "SUBIR FOTOS",
+    alert: "⚠️ Nombre y Teléfono son obligatorios", saving: "⌛ GUARDANDO...",
     segment: ["Residencial", "Comercial", "Industrial"],
-    waHeader: "*BAJA PRO SERVICES - NUEVO LEAD*",
-    waName: "Nombre", waPhone: "Teléfono", waSegment: "Segmento",
-    waServices: "Servicios", waPhotos: "Fotos"
+    waHeader: "*BAJA PRO SERVICES - NUEVO LEAD*"
   }
 };
 
 const servicesList = {
-  en: ["01. Air Conditioner Maintenance", "02. Air Conditioner Installation", "03. Interior & Exterior Painting", "04. Roof Waterproofing", "05. Floor Installation", "06. Electrical Repairs", "07. New Electrical Installations", "08. Plumbing Services", "09. Security Camera Installation", "10. Electric Fence Installation", "11. Aluminum Doors & Windows", "12. Metalwork & Welding", "13. Drywall & Cement Board", "14. General Carpentry", "15. Blinds & Curtains", "16. Leak Repairs", "17. Water Heater Installation & Repair", "18. General Maintenance", "19. Solar Panel Installation", "20. Post-Construction Deep Cleaning"],
-  es: ["01. Mantenimiento de Aire Acondicionado", "02. Instalación de Aire Acondicionado", "03. Pintura Interior y Exterior", "04. Impermeabilización de Techos", "05. Instalación de Pisos", "06. Reparaciones Eléctricas", "07. Instalaciones Eléctricas Nuevas", "08. Servicios de Plomería", "09. Instalación de Cámaras de Seguridad", "10. Instalación de Cerco Eléctrico", "11. Puertas y Ventanas de Aluminio", "12. Herrería y Soldadura", "13. Drywall y Tabla Roca", "14. Carpintería General", "15. Persianas y Cortinas", "16. Reparación de Fugas", "17. Instalación y Rep. de Boilers", "18. Mantenimiento General", "19. Instalación de Paneles Solares", "20. Limpieza Profunda Post-Construcción"]
+  en: ["01. AC Maintenance", "02. AC Installation", "03. Painting", "04. Waterproofing", "05. Floors", "06. Electrical Repair", "07. New Electrical", "08. Plumbing", "09. CCTV", "10. Electric Fence", "11. Aluminum", "12. Metalwork", "13. Drywall", "14. Carpentry", "15. Blinds", "16. Leaks", "17. Water Heaters", "18. General Maint.", "19. Solar Panels", "20. Cleaning"],
+  es: ["01. Mant. Aire Acondicionado", "02. Inst. Aire Acondicionado", "03. Pintura", "04. Impermeabilización", "05. Pisos", "06. Rep. Eléctrica", "07. Inst. Eléctrica Nueva", "08. Plomería", "09. Cámaras", "10. Cerco Eléctrico", "11. Aluminio", "12. Herrería", "13. Drywall/Tablaroca", "14. Carpintería", "15. Persianas", "16. Fugas", "17. Boilers", "18. Mant. General", "19. Paneles Solares", "20. Limpieza Profunda"]
 };
 
 function setLang(lang) {
   currentLang = lang;
   const t = translations[lang];
-
   document.getElementById("heroSub").innerText = t.heroSub;
   document.getElementById("titleClient").innerText = t.titleClient;
   document.getElementById("titleServices").innerText = t.titleServices;
   document.getElementById("titleNotes").innerText = t.titleNotes;
   document.getElementById("titlePhotos").innerText = t.titlePhotos;
-  
-  document.getElementById("nombre").placeholder = t.name;
-  document.getElementById("tel").placeholder = t.phone;
-  document.getElementById("dir").placeholder = t.address;
-  document.getElementById("notas").placeholder = t.notes;
-
-  document.getElementById("btnTech1").innerText = t.techBtn + " 1 + CRM";
-  document.getElementById("btnTech2").innerText = t.techBtn + " 2 + CRM";
-  document.getElementById("btnSales").innerText = t.salesBtn + " + CRM";
 
   const segment = document.getElementById("segment");
   segment.innerHTML = "";
-  t.segment.forEach(s => {
-    const opt = document.createElement("option");
-    opt.textContent = s;
-    segment.appendChild(opt);
-  });
+  t.segment.forEach(s => { const opt = document.createElement("option"); opt.textContent = s; segment.appendChild(opt); });
 
   const serviciosDiv = document.getElementById("servicios");
   serviciosDiv.innerHTML = "";
@@ -264,6 +179,58 @@ function setLang(lang) {
     label.innerHTML = `<input type="checkbox" value="${serv}"> ${serv}`;
     serviciosDiv.appendChild(label);
   });
+}
+
+// FUNCIÓN PARA TELEGRAM
+async function sendToTelegram(data) {
+  const text = `🚀 *NUEVO LEAD - BAJA PRO*\n\n` +
+               `👤 *Nombre:* ${data.nombre}\n` +
+               `📞 *Tel:* ${data.telefono}\n` +
+               `🏢 *Tipo:* ${data.segmento}\n` +
+               `🛠️ *Servicios:* ${data.servicios}\n` +
+               `📝 *Notas:* ${data.notas}\n` +
+               `🆔 *ID:* ${data.id}`;
+
+  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(text)}&parse_mode=Markdown`;
+  try { await fetch(url); } catch (e) { console.error("Telegram Error", e); }
+}
+
+async function submitLead(btnElement, numeroDestino) {
+  const t = translations[currentLang];
+  const nombre = document.getElementById('nombre').value.trim();
+  const tel = document.getElementById('tel').value.trim();
+
+  if (!nombre || !tel) { alert(t.alert); return; }
+
+  const originalText = btnElement.innerText;
+  const data = {
+    id: "BP-" + Math.floor(1000 + Math.random() * 9000),
+    nombre: nombre,
+    telefono: tel,
+    email: document.getElementById('email').value.trim(),
+    direccion: document.getElementById('dir').value.trim(),
+    segmento: document.getElementById('segment').value,
+    servicios: [...document.querySelectorAll('#servicios input:checked')].map(i => i.value).join(", ") || "N/A",
+    notas: document.getElementById('notas').value.trim() || "N/A",
+    fotos: document.getElementById('fotos').files.length
+  };
+
+  btnElement.innerText = t.saving;
+  btnElement.disabled = true;
+
+  try {
+    await Promise.all([
+      fetch(SHEET_ENDPOINT, { method: "POST", mode: 'no-cors', body: JSON.stringify(data) }),
+      emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, data),
+      sendToTelegram(data) // ENVÍO A TELEGRAM
+    ]);
+  } catch (e) { console.error("Sync Error", e); }
+
+  const msg = `${t.waHeader}\n\n🆔 ID: ${data.id}\n👤 Nom: ${data.nombre}\n📞 Tel: ${data.telefono}\n🛠️ Serv: ${data.servicios}`;
+  window.open(`https://wa.me/${numeroDestino.replace('+', '')}?text=${encodeURIComponent(msg)}`, "_blank");
+
+  btnElement.innerText = originalText;
+  btnElement.disabled = false;
 }
 
 document.getElementById('fotos').addEventListener('change', e => {
@@ -276,63 +243,7 @@ document.getElementById('fotos').addEventListener('change', e => {
   });
 });
 
-async function submitLead(btnElement, numeroDestino) {
-  const t = translations[currentLang];
-  const nombre = document.getElementById('nombre').value.trim();
-  const tel = document.getElementById('tel').value.trim();
-
-  if (!nombre || !tel) {
-    alert(t.alert);
-    return;
-  }
-
-  const originalText = btnElement.innerText;
-  const leadId = "BP-" + Math.floor(1000 + Math.random() * 9000);
-  const fecha = new Date().toLocaleString();
-  const servicios = [...document.querySelectorAll('#servicios input:checked')].map(i => i.value).join(", ");
-
-  const data = {
-    id: leadId,
-    fecha: fecha,
-    nombre: nombre,
-    telefono: tel,
-    email: document.getElementById('email').value.trim(),
-    direccion: document.getElementById('dir').value.trim(),
-    segmento: document.getElementById('segment').value,
-    servicios: servicios || "N/A",
-    notas: document.getElementById('notas').value.trim() || "N/A",
-    fotos: document.getElementById('fotos').files.length,
-    idioma: currentLang
-  };
-
-  btnElement.innerText = t.saving;
-  btnElement.disabled = true;
-
-  try {
-    await Promise.all([
-      fetch(SHEET_ENDPOINT, { method: "POST", mode: 'no-cors', body: JSON.stringify(data) }),
-      emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, data)
-    ]);
-  } catch (e) { 
-    console.error("Sync Error", e); 
-  }
-
-  const msg = `${t.waHeader}\n\n` +
-              `🆔 ID: ${data.id}\n` +
-              `👤 ${t.waName}: ${data.nombre}\n` +
-              `📞 ${t.waPhone}: ${data.telefono}\n` +
-              `🏢 ${t.waSegment}: ${data.segmento}\n\n` +
-              `🛠️ ${t.waServices}:\n${data.servicios}\n\n` +
-              `📸 ${t.waPhotos}: ${data.fotos}`;
-
-  window.open(`https://wa.me/${numeroDestino.replace('+', '')}?text=${encodeURIComponent(msg)}`, "_blank");
-
-  btnElement.innerText = originalText;
-  btnElement.disabled = false;
-}
-
 setLang("en");
 </script>
-
 </body>
 </html>
