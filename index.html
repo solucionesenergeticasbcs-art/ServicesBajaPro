@@ -1,290 +1,257 @@
 <index.html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAJA PRO SERVICES | Home Solutions</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #16a34a;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --muted: #64748b;
+        }
 
-<title>BAJA PRO SERVICES | Licensed & Insured Contractors</title>
-<meta name="description" content="Professional Residential & Commercial Services in Baja. Licensed • Insured • Fast Response. Electrical, Plumbing, AC, Solar, Security Film & More.">
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-<link rel="icon" href="favicon.png">
+        /* Header & Lang */
+        .header {
+            width: 100%;
+            max-width: 600px;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
 
-<style>
-:root {
-  --primary:#0f172a;
-  --accent:#16a34a;
-  --light:#f8fafc;
-}
+        .lang-switch {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
 
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:var(--light);
-  color:#111827;
-}
+        .lang-switch button {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: 0.2s;
+        }
 
-.hero{
-  background:url('hero.png') center/cover no-repeat;
-  aspect-ratio:16/6;
-  min-height:260px;
-}
+        .lang-switch button:hover { background: #f1f5f9; }
 
-.hero-title{
-  text-align:center;
-  padding:40px 20px;
-  background:white;
-  border-bottom:1px solid #e5e7eb;
-}
+        h1 { margin: 0; font-size: 28px; letter-spacing: -0.5px; color: var(--primary); }
+        .subtitle { margin: 5px 0 0; color: var(--muted); font-size: 14px; }
 
-.hero-title h1{
-  margin:0;
-  font-size:36px;
-  font-weight:900;
-  letter-spacing:3px;
-}
+        /* Form Container */
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: var(--card);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            box-sizing: border-box;
+        }
 
-.hero-title p{
-  margin-top:8px;
-  font-size:14px;
-  color:#475569;
-}
+        .section-title {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin: 20px 0 10px;
+            display: block;
+        }
 
-.lang-switch{
-  position:absolute;
-  top:20px;
-  right:20px;
-}
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline-color: var(--accent);
+            transition: border 0.2s;
+        }
 
-.lang-switch button{
-  border:none;
-  padding:6px 14px;
-  margin-left:5px;
-  border-radius:20px;
-  cursor:pointer;
-  font-weight:bold;
-}
+        input:focus { border-color: var(--accent); }
 
-.container{
-  max-width:650px;
-  margin:30px auto;
-  background:white;
-  border-radius:16px;
-  box-shadow:0 20px 50px rgba(0,0,0,.08);
-  padding:30px;
-}
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-height: 220px;
+            overflow-y: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 10px;
+            background: #fafafa;
+        }
 
-.section-title{
-  font-size:13px;
-  font-weight:bold;
-  margin:25px 0 10px;
-  color:#0f172a;
-  letter-spacing:1px;
-}
+        .service-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
 
-input, select, textarea{
-  width:100%;
-  padding:14px;
-  margin-bottom:12px;
-  border-radius:10px;
-  border:1px solid #d1d5db;
-  font-size:14px;
-}
+        .service-item:hover { background: #f1f5f9; }
+        .service-item input { width: auto; margin-right: 12px; margin-bottom: 0; }
 
-.services-list{
-  max-height:260px;
-  overflow-y:auto;
-  border:1px solid #e5e7eb;
-  border-radius:10px;
-  padding:10px;
-}
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.2s;
+            color: white;
+        }
 
-.service-item{
-  display:flex;
-  align-items:center;
-  padding:6px 0;
-  font-size:14px;
-}
+        .btn-primary { background: var(--primary); }
+        .btn-accent { background: var(--accent); }
+        .btn:active { transform: scale(0.98); opacity: 0.9; }
 
-.service-item input{
-  margin-right:10px;
-}
+        .footer { font-size: 12px; color: var(--muted); padding-bottom: 40px; }
 
-.service-item:last-child{
-  font-weight:600;
-  color:#dc2626;
-}
-
-.btn{
-  width:100%;
-  padding:18px;
-  border:none;
-  border-radius:12px;
-  font-weight:bold;
-  font-size:15px;
-  cursor:pointer;
-  margin-top:10px;
-  letter-spacing:1px;
-}
-
-.btn-tech{
-  background:#0f172a;
-  color:white;
-}
-
-.btn-sales{
-  background:var(--accent);
-  color:white;
-}
-
-.footer{
-  text-align:center;
-  font-size:12px;
-  padding:25px;
-  color:#64748b;
-}
-</style>
+        @media (max-width: 480px) {
+            h1 { font-size: 24px; }
+            .container { padding: 20px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="lang-switch">
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('es')">ES</button>
-</div>
-
-<div class="hero"></div>
-
-<div class="hero-title">
-<h1>BAJA PRO SERVICES</h1>
-<p id="heroSub">Licensed • Insured • Fast Response</p>
+<div class="header">
+    <div class="lang-switch">
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('es')">ES</button>
+    </div>
+    <h1>BAJA PRO SERVICES</h1>
+    <p id="heroSub" class="subtitle"></p>
 </div>
 
 <div class="container">
+    <span class="section-title" id="t1"></span>
+    <input id="name" type="text">
+    <input id="phone" type="tel">
+    <select id="segment"></select>
+    <input id="address" type="text">
 
-<div class="section-title" id="titleClient">CLIENT INFORMATION</div>
-<input id="name">
-<input id="phone">
-<input id="email">
-<input id="address">
-<select id="segment"></select>
+    <span class="section-title" id="t2"></span>
+    <div class="services-grid" id="services"></div>
 
-<div class="section-title" id="titleServices">SERVICES</div>
-<div class="services-list" id="services"></div>
+    <span class="section-title" id="t3"></span>
+    <textarea id="notes" rows="3"></textarea>
 
-<div class="section-title" id="titleNotes">PROJECT DETAILS</div>
-<textarea id="notes" rows="4"></textarea>
-
-<button class="btn btn-tech" onclick="sendWhatsApp('526121673200')">
-REQUEST SERVICE
-</button>
-
-<button class="btn btn-sales" onclick="sendWhatsApp('526122311422')">
-REQUEST ESTIMATE
-</button>
-
+    <button class="btn btn-primary" id="b1" onclick="send('526121673200')"></button>
+    <button class="btn btn-accent" id="b2" onclick="send('526122311422')"></button>
 </div>
 
-<div class="footer">
-© 2026 BAJA PRO SERVICES • All Rights Reserved
-</div>
+<div class="footer" id="foot"></div>
 
 <script>
-let currentLang="en";
+    let cur = "en";
+    const data = {
+        en: {
+            sub: "Licensed • Insured • Fast Response",
+            t1: "Client Information",
+            t2: "Services Requested",
+            t3: "Project Details / Notes",
+            pName: "Full Name",
+            pPhone: "Phone Number",
+            pAddr: "Project Address",
+            pNotes: "How can we help you?",
+            segs: ["Residential", "Commercial", "Industrial"],
+            b1: "REQUEST SERVICE",
+            b2: "REQUEST ESTIMATE",
+            err: "Name and Phone are required",
+            foot: "© 2026 BAJA PRO SERVICES • All Rights Reserved",
+            servs: ["AC Maintenance", "AC Installation", "Painting", "Waterproofing", "Flooring", "Electrical", "Plumbing", "CCTV Systems", "Metal Fab", "Drywall", "Solar Panels", "Professional Cleaning", "Security Film"]
+        },
+        es: {
+            sub: "Licenciados • Asegurados • Respuesta Rápida",
+            t1: "Información del Cliente",
+            t2: "Servicios Requeridos",
+            t3: "Detalles / Notas",
+            pName: "Nombre Completo",
+            pPhone: "Número de Teléfono",
+            pAddr: "Dirección del Proyecto",
+            pNotes: "¿En qué podemos ayudarte?",
+            segs: ["Residencial", "Comercial", "Industrial"],
+            b1: "SOLICITAR SERVICIO",
+            b2: "SOLICITAR PRESUPUESTO",
+            err: "Nombre y Teléfono son requeridos",
+            foot: "© 2026 BAJA PRO SERVICES • Todos los derechos reservados",
+            servs: ["Mantenimiento AC", "Instalación AC", "Pintura", "Impermeabilización", "Pisos", "Electricidad", "Plomería", "Cámaras CCTV", "Herrería", "Tablaroca", "Paneles Solares", "Limpieza", "Película de Seguridad"]
+        }
+    };
 
-const services={
-en:[
-"01. Air Conditioning Maintenance",
-"02. Air Conditioning Installation",
-"03. Interior & Exterior Painting",
-"04. Waterproofing Services",
-"05. Flooring Installation",
-"06. Electrical Repairs",
-"07. New Electrical Installations",
-"08. Plumbing Services",
-"09. CCTV Security Systems",
-"10. Electric Fence Installation",
-"11. Aluminum Works",
-"12. Metal Fabrication",
-"13. Drywall Installation",
-"14. Custom Carpentry",
-"15. Blinds & Shades",
-"16. Leak Detection & Repair",
-"17. Water Heater Installation",
-"18. General Maintenance",
-"19. Solar Panel Installation",
-"20. Professional Cleaning",
-"21. Sales & Installation of Anti-Vandal Security Window Film"
-],
-es:[
-"01. Mantenimiento de Aire Acondicionado",
-"02. Instalación de Aire Acondicionado",
-"03. Pintura Interior y Exterior",
-"04. Impermeabilización",
-"05. Instalación de Pisos",
-"06. Reparaciones Eléctricas",
-"07. Instalaciones Eléctricas Nuevas",
-"08. Servicios de Plomería",
-"09. Sistemas de Cámaras CCTV",
-"10. Instalación de Cerco Eléctrico",
-"11. Trabajos en Aluminio",
-"12. Herrería y Fabricación Metálica",
-"13. Instalación de Drywall / Tablaroca",
-"14. Carpintería Residencial y Comercial",
-"15. Persianas y Cortinas",
-"16. Detección y Reparación de Fugas",
-"17. Instalación de Boilers / Calentadores",
-"18. Mantenimiento General",
-"19. Instalación de Paneles Solares",
-"20. Limpieza Profesional",
-"21. Venta e Instalación de Película de Seguridad Antivandálica"
-]
-};
+    function setLang(l) {
+        cur = l;
+        const d = data[l];
+        document.getElementById("heroSub").innerText = d.sub;
+        document.getElementById("t1").innerText = d.t1;
+        document.getElementById("t2").innerText = d.t2;
+        document.getElementById("t3").innerText = d.t3;
+        document.getElementById("name").placeholder = d.pName;
+        document.getElementById("phone").placeholder = d.pPhone;
+        document.getElementById("address").placeholder = d.pAddr;
+        document.getElementById("notes").placeholder = d.pNotes;
+        document.getElementById("b1").innerText = d.b1;
+        document.getElementById("b2").innerText = d.b2;
+        document.getElementById("foot").innerText = d.foot;
 
-function setLang(lang){
-currentLang=lang;
-document.documentElement.lang=lang;
+        const seg = document.getElementById("segment");
+        seg.innerHTML = d.segs.map(s => `<option value="${s}">${s}</option>`).join('');
 
-document.getElementById("titleClient").innerText=lang==="en"?"CLIENT INFORMATION":"DATOS DEL CLIENTE";
-document.getElementById("titleServices").innerText=lang==="en"?"SERVICES":"SERVICIOS";
-document.getElementById("titleNotes").innerText=lang==="en"?"PROJECT DETAILS":"DETALLES DEL PROYECTO";
-document.getElementById("heroSub").innerText=lang==="en"?"Licensed • Insured • Fast Response":"Licenciados • Asegurados • Respuesta Rápida";
+        const grid = document.getElementById("services");
+        grid.innerHTML = d.servs.map(s => `
+            <label class="service-item">
+                <input type="checkbox" value="${s}"> ${s}
+            </label>
+        `).join('');
+    }
 
-document.getElementById("name").placeholder=lang==="en"?"Full Name":"Nombre Completo";
-document.getElementById("phone").placeholder=lang==="en"?"Phone Number":"Teléfono";
-document.getElementById("email").placeholder=lang==="en"?"Email Address":"Correo Electrónico";
-document.getElementById("address").placeholder=lang==="en"?"Project Address":"Dirección del Proyecto";
-document.getElementById("notes").placeholder=lang==="en"?"Describe your project...":"Describe tu proyecto...";
+    function send(num) {
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const selected = [...document.querySelectorAll("#services input:checked")].map(i => i.value);
 
-const segment=document.getElementById("segment");
-segment.innerHTML="";
-["Residential","Commercial","Industrial"].forEach((s,i)=>{
-let opt=document.createElement("option");
-opt.textContent=lang==="en"?["Residential","Commercial","Industrial"][i]:["Residencial","Comercial","Industrial"][i];
-segment.appendChild(opt);
-});
+        if (!name || !phone) { alert(data[cur].err); return; }
 
-const list=document.getElementById("services");
-list.innerHTML="";
-services[lang].forEach(serv=>{
-let label=document.createElement("label");
-label.className="service-item";
-label.innerHTML=`<input type="checkbox" value="${serv}">${serv}`;
-list.appendChild(label);
-});
-}
+        let msg = `*BAJA PRO SERVICES*\n\n`;
+        msg += `*Name:* ${name}\n*Phone:* ${phone}\n`;
+        msg += `*Type:* ${document.getElementById("segment").value}\n`;
+        msg += `*Address:* ${document.getElementById("address").value || 'N/A'}\n`;
+        if(selected.length > 0) msg += `\n*Services:* ${selected.join(", ")}\n`;
+        if(document.getElementById("notes").value) msg += `\n*Notes:* ${document.getElementById("notes").value}`;
 
-function sendWhatsApp(number){
-const name=document.getElementById("name").value;
-const phone=document.getElementById("phone").value;
-if(!name||!phone){alert("Name and phone required");return;}
+        window.open(`https://wa.me{num}?text=${encodeURIComponent(msg)}`, "_blank");
+    }
 
-const selected=[...document.querySelectorAll("#services input:checked")].map(i=>i.value).join(", ");
-
-let message=`BAJA PRO SERVICES\n\nName: ${name}\nPhone: ${phone}\nServices: ${selected}`;
-window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`,"_blank");
-}
-
-setLang("en");
+    setLang("en");
 </script>
 
 </body>
