@@ -3,124 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAJA PRO SERVICES | Home Solutions</title>
+    <title>BAJA PRO SERVICES | Licensed & Insured Contractors</title>
     <style>
         :root {
-            --primary: #0f172a;
-            --accent: #16a34a;
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text: #1e293b;
-            --muted: #64748b;
+            --primary-blue: #1e40af;
+            --dark-blue: #0f172a;
+            --accent-green: #16a34a;
+            --bg-light: #f1f5f9;
         }
 
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: #1e293b;
         }
 
         /* --- HERO SECTION --- */
         .hero {
             width: 100%;
-            height: 300px;
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), 
-                        url('hero.png') center/cover no-repeat;
+            aspect-ratio: 16/7;
+            min-height: 250px;
+            background: url('hero.png') center/cover no-repeat;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
+            align-items: flex-start;
+            justify-content: flex-end;
             position: relative;
         }
 
         .lang-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            margin: 15px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            z-index: 20;
         }
 
         .lang-switch button {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
             padding: 6px 14px;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: bold;
             font-size: 12px;
-            backdrop-filter: blur(5px);
             transition: 0.3s;
         }
 
-        .lang-switch button:hover { background: white; color: var(--primary); }
-
-        .hero h1 { 
-            margin: 0; 
-            font-size: 32px; 
-            letter-spacing: 2px; 
-            font-weight: 900;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .hero .subtitle { 
-            margin-top: 10px; 
-            font-size: 16px; 
-            opacity: 0.9;
-            font-weight: 400;
-        }
+        .lang-switch button:hover { background: var(--primary-blue); color: white; }
 
         /* --- FORM CONTAINER --- */
         .container {
-            width: 90%;
-            max-width: 500px;
-            background: var(--card);
+            width: 92%;
+            max-width: 550px;
+            background: white;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            margin: -50px auto 40px; /* Eleva el contenedor sobre el Hero */
-            box-sizing: border-box;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            margin: -60px auto 40px;
             position: relative;
             z-index: 10;
         }
 
         .section-title {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--muted);
+            color: var(--primary-blue);
             margin: 20px 0 10px;
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+
+        .section-title::after { content: ""; height: 1px; background: #e2e8f0; flex: 1; }
 
         input, select, textarea {
             width: 100%;
             padding: 14px;
             margin-bottom: 12px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1;
             border-radius: 12px;
             font-size: 16px;
             box-sizing: border-box;
-            outline-color: var(--accent);
         }
 
+        input:focus { outline: 2px solid var(--primary-blue); border-color: transparent; }
+
+        /* LISTA DE SERVICIOS (21 SERVICIOS) */
         .services-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            max-height: 200px;
+            max-height: 260px;
             overflow-y: auto;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 10px;
-            background: #fafafa;
+            padding: 8px;
+            background: #f8fafc;
         }
 
         .service-item {
@@ -129,13 +106,13 @@
             padding: 10px;
             font-size: 14px;
             cursor: pointer;
-            border-radius: 8px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #edf2f7;
         }
 
         .service-item:hover { background: #f1f5f9; }
         .service-item input { width: auto; margin-right: 12px; margin-bottom: 0; }
 
+        /* BOTONES */
         .btn {
             width: 100%;
             padding: 18px;
@@ -144,20 +121,20 @@
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 10px;
-            transition: 0.2s;
+            margin-top: 12px;
             color: white;
+            transition: 0.2s;
         }
 
-        .btn-primary { background: var(--primary); }
-        .btn-accent { background: var(--accent); }
+        .btn-service { background: var(--dark-blue); }
+        .btn-estimate { background: var(--accent-green); }
         .btn:active { transform: scale(0.98); }
 
-        .footer { font-size: 12px; color: var(--muted); padding: 20px 0 40px; text-align: center; }
+        .footer { text-align: center; font-size: 12px; color: #94a3b8; padding-bottom: 40px; }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: 26px; }
-            .container { padding: 20px; }
+            .container { padding: 20px; margin-top: -40px; }
+            .hero { aspect-ratio: 16/9; }
         }
     </style>
 </head>
@@ -168,70 +145,71 @@
         <button onclick="setLang('en')">EN</button>
         <button onclick="setLang('es')">ES</button>
     </div>
-    <h1>BAJA PRO SERVICES</h1>
-    <p id="heroSub" class="subtitle"></p>
 </div>
 
 <div class="container">
-    <span class="section-title" id="t1"></span>
+    <span class="section-title" id="t1">CLIENT INFORMATION</span>
     <input id="name" type="text">
     <input id="phone" type="tel">
     <select id="segment"></select>
     <input id="address" type="text">
 
-    <span class="section-title" id="t2"></span>
+    <span class="section-title" id="t2">SERVICES</span>
     <div class="services-grid" id="services"></div>
 
-    <span class="section-title" id="t3"></span>
+    <span class="section-title" id="t3">PROJECT DETAILS</span>
     <textarea id="notes" rows="3"></textarea>
 
-    <button class="btn btn-primary" id="b1" onclick="send('526121673200')"></button>
-    <button class="btn btn-accent" id="b2" onclick="send('526122311422')"></button>
+    <button class="btn btn-service" id="b1" onclick="sendWhatsApp('526121673200')"></button>
+    <button class="btn btn-estimate" id="b2" onclick="sendWhatsApp('526122311422')"></button>
 </div>
 
-<div class="footer" id="foot"></div>
+<div class="footer" id="footText">© 2026 BAJA PRO SERVICES</div>
 
 <script>
-    let cur = "en";
-    const data = {
+    let currentLang = "en";
+
+    const servicesList = {
+        en: [
+            "01. Air Conditioning Maintenance", "02. Air Conditioning Installation", "03. Interior & Exterior Painting",
+            "04. Waterproofing Services", "05. Flooring Installation", "06. Electrical Repairs",
+            "07. New Electrical Installations", "08. Plumbing Services", "09. CCTV Security Systems",
+            "10. Electric Fence Installation", "11. Aluminum Works", "12. Metal Fabrication",
+            "13. Drywall Installation", "14. Custom Carpentry", "15. Blinds & Shades",
+            "16. Leak Detection & Repair", "17. Water Heater Installation", "18. General Maintenance",
+            "19. Solar Panel Installation", "20. Professional Cleaning", "21. Anti-Vandal Security Window Film"
+        ],
+        es: [
+            "01. Mantenimiento de Aire Acondicionado", "02. Instalación de Aire Acondicionado", "03. Pintura Interior y Exterior",
+            "04. Impermeabilización", "05. Instalación de Pisos", "06. Reparaciones Eléctricas",
+            "07. Instalaciones Eléctricas Nuevas", "08. Servicios de Plomería", "09. Sistemas de Cámaras CCTV",
+            "10. Instalación de Cerco Eléctrico", "11. Trabajos en Aluminio", "12. Herrería y Fabricación Metálica",
+            "13. Instalación de Drywall / Tablaroca", "14. Carpintería Residencial y Comercial", "15. Persianas y Cortinas",
+            "16. Detección y Reparación de Fugas", "17. Instalación de Boilers / Calentadores", "18. Mantenimiento General",
+            "19. Instalación de Paneles Solares", "20. Limpieza Profesional", "21. Venta e Instalación de Película de Seguridad"
+        ]
+    };
+
+    const ui = {
         en: {
-            sub: "Licensed • Insured • Fast Response",
-            t1: "Client Information",
-            t2: "Services Requested",
-            t3: "Project Details / Notes",
-            pName: "Full Name",
-            pPhone: "Phone Number",
-            pAddr: "Project Address",
-            pNotes: "How can we help you?",
+            t1: "CLIENT INFORMATION", t2: "SERVICES", t3: "PROJECT DETAILS",
+            pName: "Full Name", pPhone: "Phone Number", pAddr: "Job Site Address", pNotes: "Describe your project...",
             segs: ["Residential", "Commercial", "Industrial"],
-            b1: "REQUEST SERVICE",
-            b2: "REQUEST ESTIMATE",
-            err: "Name and Phone are required",
-            foot: "© 2026 BAJA PRO SERVICES • All Rights Reserved",
-            servs: ["AC Maintenance", "AC Installation", "Painting", "Waterproofing", "Flooring", "Electrical", "Plumbing", "CCTV Systems", "Metal Fab", "Drywall", "Solar Panels", "Cleaning", "Security Film"]
+            b1: "REQUEST SERVICE", b2: "REQUEST ESTIMATE",
+            alert: "Name and Phone are required", foot: "© 2026 BAJA PRO SERVICES • Licensed & Insured"
         },
         es: {
-            sub: "Licenciados • Asegurados • Respuesta Rápida",
-            t1: "Información del Cliente",
-            t2: "Servicios Requeridos",
-            t3: "Detalles / Notas",
-            pName: "Nombre Completo",
-            pPhone: "Número de Teléfono",
-            pAddr: "Dirección del Proyecto",
-            pNotes: "¿En qué podemos ayudarte?",
+            t1: "DATOS DEL CLIENTE", t2: "SERVICIOS", t3: "DETALLES DEL PROYECTO",
+            pName: "Nombre Completo", pPhone: "Teléfono", pAddr: "Dirección del Proyecto", pNotes: "Describe tu proyecto...",
             segs: ["Residencial", "Comercial", "Industrial"],
-            b1: "SOLICITAR SERVICIO",
-            b2: "SOLICITAR PRESUPUESTO",
-            err: "Nombre y Teléfono son requeridos",
-            foot: "© 2026 BAJA PRO SERVICES • Todos los derechos reservados",
-            servs: ["Mantenimiento AC", "Instalación AC", "Pintura", "Impermeabilización", "Pisos", "Electricidad", "Plomería", "Cámaras CCTV", "Herrería", "Tablaroca", "Paneles Solares", "Limpieza", "Película de Seguridad"]
+            b1: "SOLICITAR SERVICIO", b2: "SOLICITAR PRESUPUESTO",
+            alert: "Nombre y Teléfono son obligatorios", foot: "© 2026 BAJA PRO SERVICES • Licenciados y Asegurados"
         }
     };
 
     function setLang(l) {
-        cur = l;
-        const d = data[l];
-        document.getElementById("heroSub").innerText = d.sub;
+        currentLang = l;
+        const d = ui[l];
         document.getElementById("t1").innerText = d.t1;
         document.getElementById("t2").innerText = d.t2;
         document.getElementById("t3").innerText = d.t3;
@@ -241,25 +219,23 @@
         document.getElementById("notes").placeholder = d.pNotes;
         document.getElementById("b1").innerText = d.b1;
         document.getElementById("b2").innerText = d.b2;
-        document.getElementById("foot").innerText = d.foot;
+        document.getElementById("footText").innerText = d.foot;
 
         const seg = document.getElementById("segment");
         seg.innerHTML = d.segs.map(s => `<option value="${s}">${s}</option>`).join('');
 
         const grid = document.getElementById("services");
-        grid.innerHTML = d.servs.map(s => `
-            <label class="service-item">
-                <input type="checkbox" value="${s}"> ${s}
-            </label>
+        grid.innerHTML = servicesList[l].map(s => `
+            <label class="service-item"><input type="checkbox" value="${s}"> ${s}</label>
         `).join('');
     }
 
-    function send(num) {
+    function sendWhatsApp(num) {
         const name = document.getElementById("name").value;
         const phone = document.getElementById("phone").value;
         const selected = [...document.querySelectorAll("#services input:checked")].map(i => i.value);
 
-        if (!name || !phone) { alert(data[cur].err); return; }
+        if (!name || !phone) { alert(ui[currentLang].alert); return; }
 
         let msg = `*BAJA PRO SERVICES*\n\n`;
         msg += `*Name:* ${name}\n*Phone:* ${phone}\n`;
@@ -273,7 +249,5 @@
 
     setLang("en");
 </script>
-
 </body>
 </html>
-
