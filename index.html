@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BAJA PRO SERVICES - Licensed & Insured Contractors. Air Conditioning, Electrical, Plumbing, Solar & More.">
     <title>BAJA PRO SERVICES | Licensed & Insured Contractors</title>
     <style>
         :root {
@@ -10,13 +11,26 @@
             --dark-blue: #0f172a;
             --accent-green: #16a34a;
             --bg-light: #f1f5f9;
+            --border-color: #cbd5e1;
+            --focus-color: #3b82f6;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background-color: var(--bg-light);
             color: #1e293b;
+            line-height: 1.6;
         }
 
         /* --- HERO SECTION --- */
@@ -24,11 +38,16 @@
             width: 100%;
             aspect-ratio: 16/7;
             min-height: 250px;
-            background: url('hero.png') center/cover no-repeat;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            background-image: url('hero.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             align-items: flex-start;
             justify-content: flex-end;
             position: relative;
+            overflow: hidden;
         }
 
         .lang-switch {
@@ -36,20 +55,32 @@
             display: flex;
             gap: 8px;
             z-index: 20;
+            flex-wrap: wrap;
         }
 
         .lang-switch button {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid #ddd;
-            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid transparent;
+            padding: 8px 16px;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 12px;
-            transition: 0.3s;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
         }
 
-        .lang-switch button:hover { background: var(--primary-blue); color: white; }
+        .lang-switch button:hover,
+        .lang-switch button.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: white;
+        }
+
+        .lang-switch button:focus {
+            outline: 2px solid white;
+            outline-offset: 2px;
+        }
 
         /* --- FORM CONTAINER --- */
         .container {
@@ -58,196 +89,504 @@
             background: white;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             margin: -60px auto 40px;
             position: relative;
             z-index: 10;
         }
 
         .section-title {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--primary-blue);
-            margin: 20px 0 10px;
+            margin: 24px 0 14px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
 
-        .section-title::after { content: ""; height: 1px; background: #e2e8f0; flex: 1; }
+        .section-title::after {
+            content: "";
+            height: 2px;
+            background: linear-gradient(to right, #e2e8f0, transparent);
+            flex: 1;
+        }
 
-        input, select, textarea {
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #475569;
+        }
+
+        input,
+        select,
+        textarea {
             width: 100%;
-            padding: 14px;
-            margin-bottom: 12px;
-            border: 1px solid #cbd5e1;
+            padding: 14px 16px;
+            border: 2px solid var(--border-color);
             border-radius: 12px;
             font-size: 16px;
-            box-sizing: border-box;
+            font-family: inherit;
+            transition: var(--transition);
+            background-color: #fafbfc;
         }
 
-        input:focus { outline: 2px solid var(--primary-blue); border-color: transparent; }
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--focus-color);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
 
-        /* LISTA DE SERVICIOS (21 SERVICIOS) */
+        input::placeholder,
+        textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        /* SERVICES GRID */
         .services-grid {
-            max-height: 260px;
+            max-height: 280px;
             overflow-y: auto;
-            border: 1px solid #e2e8f0;
+            border: 2px solid var(--border-color);
             border-radius: 12px;
-            padding: 8px;
+            padding: 12px;
             background: #f8fafc;
+            margin-bottom: 14px;
+        }
+
+        .services-grid:focus-within {
+            border-color: var(--focus-color);
+            background-color: white;
         }
 
         .service-item {
             display: flex;
             align-items: center;
-            padding: 10px;
+            padding: 12px;
             font-size: 14px;
             cursor: pointer;
-            border-bottom: 1px solid #edf2f7;
+            border-radius: 8px;
+            transition: var(--transition);
+            user-select: none;
         }
 
-        .service-item:hover { background: #f1f5f9; }
-        .service-item input { width: auto; margin-right: 12px; margin-bottom: 0; }
+        .service-item:hover {
+            background: #e8f1fe;
+        }
 
-        /* BOTONES */
+        .service-item input {
+            width: auto !important;
+            height: 18px;
+            width: 18px;
+            margin-right: 12px;
+            margin-bottom: 0;
+            cursor: pointer;
+            accent-color: var(--primary-blue);
+        }
+
+        .service-item input:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+
+        /* BUTTONS */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
         .btn {
-            width: 100%;
-            padding: 18px;
+            padding: 16px;
             border: none;
             border-radius: 14px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 12px;
             color: white;
-            transition: 0.2s;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .btn-service { background: var(--dark-blue); }
-        .btn-estimate { background: var(--accent-green); }
-        .btn:active { transform: scale(0.98); }
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
 
-        .footer { text-align: center; font-size: 12px; color: #94a3b8; padding-bottom: 40px; }
+        .btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-service {
+            background: linear-gradient(135deg, var(--dark-blue), #1e3a8a);
+        }
+
+        .btn-service:hover:not(:disabled) {
+            background: linear-gradient(135deg, #0f172a, #0f3460);
+        }
+
+        .btn-estimate {
+            background: linear-gradient(135deg, var(--accent-green), #15803d);
+        }
+
+        .btn-estimate:hover:not(:disabled) {
+            background: linear-gradient(135deg, #16a34a, #059669);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            padding-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        /* SCROLLBAR STYLING */
+        .services-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .services-grid::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        .services-grid::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .services-grid::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* TOAST NOTIFICATIONS */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ef4444;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.3s ease;
+            z-index: 1000;
+            max-width: 90vw;
+        }
+
+        .toast.success {
+            background: var(--accent-green);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px;
+                margin-top: -50px;
+                width: 95%;
+            }
+
+            .hero {
+                aspect-ratio: 16/9;
+            }
+        }
 
         @media (max-width: 480px) {
-            .container { padding: 20px; margin-top: -40px; }
-            .hero { aspect-ratio: 16/9; }
+            .container {
+                padding: 20px;
+                margin-top: -40px;
+                border-radius: 16px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 14px;
+            }
+
+            .section-title {
+                font-size: 10px;
+                margin: 18px 0 12px;
+            }
+
+            input,
+            select,
+            textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="hero">
-    <div class="lang-switch">
-        <button onclick="setLang('en')">EN</button>
-        <button onclick="setLang('es')">ES</button>
+    <div class="lang-switch" role="tablist" aria-label="Language selection">
+        <button id="lang-en" role="tab" aria-selected="true" aria-controls="form-en" onclick="setLang('en')">EN</button>
+        <button id="lang-es" role="tab" aria-selected="false" aria-controls="form-es" onclick="setLang('es')">ES</button>
     </div>
 </div>
 
-<div class="container">
-    <span class="section-title" id="t1">CLIENT INFORMATION</span>
-    <input id="name" type="text">
-    <input id="phone" type="tel">
-    <select id="segment"></select>
-    <input id="address" type="text">
+<div class="container" role="main">
+    <form id="serviceForm" name="serviceForm">
+        <div class="form-group">
+            <label for="name" id="nameLabel"></label>
+            <input id="name" type="text" required aria-describedby="nameLabel" autocomplete="name">
+        </div>
 
-    <span class="section-title" id="t2">SERVICES</span>
-    <div class="services-grid" id="services"></div>
+        <div class="form-group">
+            <label for="phone" id="phoneLabel"></label>
+            <input id="phone" type="tel" required aria-describedby="phoneLabel" autocomplete="tel" inputmode="tel">
+        </div>
 
-    <span class="section-title" id="t3">PROJECT DETAILS</span>
-    <textarea id="notes" rows="3"></textarea>
+        <div class="form-group">
+            <label for="segment" id="segmentLabel"></label>
+            <select id="segment" required aria-describedby="segmentLabel"></select>
+        </div>
 
-    <button class="btn btn-service" id="b1" onclick="sendWhatsApp('526121673200')"></button>
-    <button class="btn btn-estimate" id="b2" onclick="sendWhatsApp('526122311422')"></button>
+        <div class="form-group">
+            <label for="address" id="addressLabel"></label>
+            <input id="address" type="text" aria-describedby="addressLabel" autocomplete="street-address">
+        </div>
+
+        <span class="section-title" id="t2"></span>
+        <fieldset>
+            <legend class="sr-only" id="servicesLegend"></legend>
+            <div class="services-grid" id="services" role="group" aria-labelledby="t2"></div>
+        </fieldset>
+
+        <span class="section-title" id="t3"></span>
+        <div class="form-group">
+            <label for="notes" id="notesLabel"></label>
+            <textarea id="notes" rows="4" aria-describedby="notesLabel"></textarea>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-service" id="b1"></button>
+            <button type="button" class="btn btn-estimate" id="b2"></button>
+        </div>
+    </form>
 </div>
 
-<div class="footer" id="footText">© 2026 BAJA PRO SERVICES</div>
+<div class="footer" id="footText"></div>
 
 <script>
-    let currentLang = "en";
+    // ====== CONFIGURATION ======
+    const CONFIG = {
+        whatsappNumbers: {
+            service: '526121673200',
+            estimate: '526122311422'
+        },
+        validationRules: {
+            phone: /^\d{7,}$/ // At least 7 digits
+        }
+    };
+
+    let currentLang = 'en';
 
     const servicesList = {
         en: [
-            "01. Air Conditioning Maintenance", "02. Air Conditioning Installation", "03. Interior & Exterior Painting",
-            "04. Waterproofing Services", "05. Flooring Installation", "06. Electrical Repairs",
-            "07. New Electrical Installations", "08. Plumbing Services", "09. CCTV Security Systems",
-            "10. Electric Fence Installation", "11. Aluminum Works", "12. Metal Fabrication",
-            "13. Drywall Installation", "14. Custom Carpentry", "15. Blinds & Shades",
-            "16. Leak Detection & Repair", "17. Water Heater Installation", "18. General Maintenance",
-            "19. Solar Panel Installation", "20. Professional Cleaning", "21. Anti-Vandal Security Window Film"
+            '01. Air Conditioning Maintenance', '02. Air Conditioning Installation', '03. Interior & Exterior Painting',
+            '04. Waterproofing Services', '05. Flooring Installation', '06. Electrical Repairs',
+            '07. New Electrical Installations', '08. Plumbing Services', '09. CCTV Security Systems',
+            '10. Electric Fence Installation', '11. Aluminum Works', '12. Metal Fabrication',
+            '13. Drywall Installation', '14. Custom Carpentry', '15. Blinds & Shades',
+            '16. Leak Detection & Repair', '17. Water Heater Installation', '18. General Maintenance',
+            '19. Solar Panel Installation', '20. Professional Cleaning', '21. Anti-Vandal Security Window Film'
         ],
         es: [
-            "01. Mantenimiento de Aire Acondicionado", "02. Instalación de Aire Acondicionado", "03. Pintura Interior y Exterior",
-            "04. Impermeabilización", "05. Instalación de Pisos", "06. Reparaciones Eléctricas",
-            "07. Instalaciones Eléctricas Nuevas", "08. Servicios de Plomería", "09. Sistemas de Cámaras CCTV",
-            "10. Instalación de Cerco Eléctrico", "11. Trabajos en Aluminio", "12. Herrería y Fabricación Metálica",
-            "13. Instalación de Drywall / Tablaroca", "14. Carpintería Residencial y Comercial", "15. Persianas y Cortinas",
-            "16. Detección y Reparación de Fugas", "17. Instalación de Boilers / Calentadores", "18. Mantenimiento General",
-            "19. Instalación de Paneles Solares", "20. Limpieza Profesional", "21. Venta e Instalación de Película de Seguridad"
+            '01. Mantenimiento de Aire Acondicionado', '02. Instalación de Aire Acondicionado', '03. Pintura Interior y Exterior',
+            '04. Impermeabilización', '05. Instalación de Pisos', '06. Reparaciones Eléctricas',
+            '07. Instalaciones Eléctricas Nuevas', '08. Servicios de Plomería', '09. Sistemas de Cámaras CCTV',
+            '10. Instalación de Cerco Eléctrico', '11. Trabajos en Aluminio', '12. Herrería y Fabricación Metálica',
+            '13. Instalación de Drywall / Tablaroca', '14. Carpintería Residencial y Comercial', '15. Persianas y Cortinas',
+            '16. Detección y Reparación de Fugas', '17. Instalación de Boilers / Calentadores', '18. Mantenimiento General',
+            '19. Instalación de Paneles Solares', '20. Limpieza Profesional', '21. Venta e Instalación de Película de Seguridad'
         ]
     };
 
     const ui = {
         en: {
-            t1: "CLIENT INFORMATION", t2: "SERVICES", t3: "PROJECT DETAILS",
-            pName: "Full Name", pPhone: "Phone Number", pAddr: "Job Site Address", pNotes: "Describe your project...",
-            segs: ["Residential", "Commercial", "Industrial"],
-            b1: "REQUEST SERVICE", b2: "REQUEST ESTIMATE",
-            alert: "Name and Phone are required", foot: "© 2026 BAJA PRO SERVICES • Licensed & Insured"
+            t1: 'CLIENT INFORMATION', t2: 'SERVICES', t3: 'PROJECT DETAILS',
+            pName: 'Full Name', pPhone: 'Phone Number', pAddr: 'Job Site Address', pNotes: 'Describe your project...',
+            segs: ['Residential', 'Commercial', 'Industrial'],
+            b1: 'REQUEST SERVICE', b2: 'REQUEST ESTIMATE',
+            alertRequired: 'Name and Phone are required', 
+            alertPhone: 'Please enter a valid phone number',
+            alertSuccess: 'Opening WhatsApp...',
+            foot: '© 2026 BAJA PRO SERVICES • Licensed & Insured'
         },
         es: {
-            t1: "DATOS DEL CLIENTE", t2: "SERVICIOS", t3: "DETALLES DEL PROYECTO",
-            pName: "Nombre Completo", pPhone: "Teléfono", pAddr: "Dirección del Proyecto", pNotes: "Describe tu proyecto...",
-            segs: ["Residencial", "Comercial", "Industrial"],
-            b1: "SOLICITAR SERVICIO", b2: "SOLICITAR PRESUPUESTO",
-            alert: "Nombre y Teléfono son obligatorios", foot: "© 2026 BAJA PRO SERVICES • Licenciados y Asegurados"
+            t1: 'DATOS DEL CLIENTE', t2: 'SERVICIOS', t3: 'DETALLES DEL PROYECTO',
+            pName: 'Nombre Completo', pPhone: 'Teléfono', pAddr: 'Dirección del Proyecto', pNotes: 'Describe tu proyecto...',
+            segs: ['Residencial', 'Comercial', 'Industrial'],
+            b1: 'SOLICITAR SERVICIO', b2: 'SOLICITAR PRESUPUESTO',
+            alertRequired: 'Nombre y Teléfono son obligatorios',
+            alertPhone: 'Por favor ingresa un número de teléfono válido',
+            alertSuccess: 'Abriendo WhatsApp...',
+            foot: '© 2026 BAJA PRO SERVICES • Licenciados y Asegurados'
         }
     };
 
-    function setLang(l) {
-        currentLang = l;
-        const d = ui[l];
-        document.getElementById("t1").innerText = d.t1;
-        document.getElementById("t2").innerText = d.t2;
-        document.getElementById("t3").innerText = d.t3;
-        document.getElementById("name").placeholder = d.pName;
-        document.getElementById("phone").placeholder = d.pPhone;
-        document.getElementById("address").placeholder = d.pAddr;
-        document.getElementById("notes").placeholder = d.pNotes;
-        document.getElementById("b1").innerText = d.b1;
-        document.getElementById("b2").innerText = d.b2;
-        document.getElementById("footText").innerText = d.foot;
+    // ====== UTILITY FUNCTIONS ======
+    function sanitizeHTML(str) {
+        const map = {
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+        };
+        return str.replace(/[&<>"']/g, m => map[m]);
+    }
 
-        const seg = document.getElementById("segment");
-        seg.innerHTML = d.segs.map(s => `<option value="${s}">${s}</option>`).join('');
+    function showToast(message, isSuccess = false) {
+        const toast = document.createElement('div');
+        toast.className = `toast ${isSuccess ? 'success' : ''}`;
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
+        toast.textContent = message;
+        document.body.appendChild(toast);
 
-        const grid = document.getElementById("services");
-        grid.innerHTML = servicesList[l].map(s => `
-            <label class="service-item"><input type="checkbox" value="${s}"> ${s}</label>
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease forwards';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    function validateForm() {
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+
+        if (!name || !phone) {
+            showToast(ui[currentLang].alertRequired);
+            return false;
+        }
+
+        const cleanPhone = phone.replace(/\D/g, '');
+        if (!CONFIG.validationRules.phone.test(cleanPhone)) {
+            showToast(ui[currentLang].alertPhone);
+            return false;
+        }
+
+        return true;
+    }
+
+    // ====== LANGUAGE SWITCHING ======
+    function setLang(lang) {
+        currentLang = lang;
+        const d = ui[lang];
+
+        // Update lang tabs
+        document.getElementById('lang-en').setAttribute('aria-selected', lang === 'en');
+        document.getElementById('lang-es').setAttribute('aria-selected', lang === 'es');
+
+        // Update text content
+        document.getElementById('t2').textContent = d.t2;
+        document.getElementById('t3').textContent = d.t3;
+        document.getElementById('nameLabel').textContent = d.pName;
+        document.getElementById('phoneLabel').textContent = d.pPhone;
+        document.getElementById('addressLabel').textContent = d.pAddr;
+        document.getElementById('notesLabel').textContent = d.pNotes;
+        document.getElementById('segmentLabel').textContent = 'Type';
+        document.getElementById('servicesLegend').textContent = d.t2;
+        document.getElementById('b1').textContent = d.b1;
+        document.getElementById('b2').textContent = d.b2;
+        document.getElementById('footText').textContent = d.foot;
+
+        // Update placeholders
+        document.getElementById('name').placeholder = d.pName;
+        document.getElementById('phone').placeholder = d.pPhone;
+        document.getElementById('address').placeholder = d.pAddr;
+        document.getElementById('notes').placeholder = d.pNotes;
+
+        // Update segment options
+        const seg = document.getElementById('segment');
+        seg.innerHTML = '<option value="">' + (lang === 'en' ? 'Select Type' : 'Selecciona Tipo') + '</option>' +
+            d.segs.map(s => `<option value="${sanitizeHTML(s)}">${sanitizeHTML(s)}</option>`).join('');
+
+        // Update services
+        const grid = document.getElementById('services');
+        grid.innerHTML = servicesList[lang].map((s, i) => `
+            <label class="service-item">
+                <input type="checkbox" value="${sanitizeHTML(s)}" data-service-index="${i}">
+                <span>${sanitizeHTML(s)}</span>
+            </label>
         `).join('');
     }
 
-    function sendWhatsApp(num) {
-        const name = document.getElementById("name").value;
-        const phone = document.getElementById("phone").value;
-        const selected = [...document.querySelectorAll("#services input:checked")].map(i => i.value);
+    // ====== WHATSAPP INTEGRATION ======
+    function sendWhatsApp(whatsappType) {
+        if (!validateForm()) return;
 
-        if (!name || !phone) { alert(ui[currentLang].alert); return; }
+        const name = sanitizeHTML(document.getElementById('name').value.trim());
+        const phone = document.getElementById('phone').value.trim();
+        const type = document.getElementById('segment').value;
+        const address = sanitizeHTML(document.getElementById('address').value.trim());
+        const notes = sanitizeHTML(document.getElementById('notes').value.trim());
+        const selected = [...document.querySelectorAll('#services input:checked')].map(i => i.value);
 
         let msg = `*BAJA PRO SERVICES*\n\n`;
-        msg += `*Name:* ${name}\n*Phone:* ${phone}\n`;
-        msg += `*Type:* ${document.getElementById("segment").value}\n`;
-        msg += `*Address:* ${document.getElementById("address").value || 'N/A'}\n`;
-        if(selected.length > 0) msg += `\n*Services:* ${selected.join(", ")}\n`;
-        if(document.getElementById("notes").value) msg += `\n*Notes:* ${document.getElementById("notes").value}`;
+        msg += `*Nombre:* ${name}\n`;
+        msg += `*Teléfono:* ${phone}\n`;
+        if (type) msg += `*Tipo:* ${type}\n`;
+        if (address) msg += `*Dirección:* ${address}\n`;
+        if (selected.length > 0) msg += `\n*Servicios:*\n${selected.map(s => '• ' + s).join('\n')}\n`;
+        if (notes) msg += `\n*Notas:* ${notes}`;
 
-        window.open(`https://wa.me{num}?text=${encodeURIComponent(msg)}`, "_blank");
+        const number = CONFIG.whatsappNumbers[whatsappType];
+        const whatsappUrl = `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
+
+        showToast(ui[currentLang].alertSuccess, true);
+        setTimeout(() => {
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }, 500);
     }
 
-    setLang("en");
+    // ====== EVENT LISTENERS ======
+    document.getElementById('b1').addEventListener('click', (e) => {
+        e.preventDefault();
+        sendWhatsApp('service');
+    });
+
+    document.getElementById('b2').addEventListener('click', (e) => {
+        e.preventDefault();
+        sendWhatsApp('estimate');
+    });
+
+    // ====== INITIALIZATION ======
+    setLang('en');
 </script>
+
 </body>
 </html>
