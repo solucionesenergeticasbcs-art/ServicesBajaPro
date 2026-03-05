@@ -1,5 +1,5 @@
 <index.html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,394 +10,235 @@
             --primary-blue: #1e40af;
             --dark-blue: #0f172a;
             --accent-green: #16a34a;
-            --bg-light: #f1f5f9;
+            --bg-light: #f8fafc;
             --border-color: #cbd5e1;
             --focus-color: #3b82f6;
-            --transition: all 0.3s ease;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-light);
             color: #1e293b;
             line-height: 1.6;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero {
             width: 100%;
-            aspect-ratio: 16/7;
-            min-height: 250px;
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
-            background-image: url('hero.png');
+            height: 300px;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('hero.png');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             display: flex;
-            align-items: flex-start;
-            justify-content: flex-end;
-            position: relative;
-            overflow: hidden;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
 
+        .hero h1 { font-size: 2rem; letter-spacing: 2px; margin-bottom: 10px; }
+
         .lang-switch {
-            margin: 15px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
             display: flex;
             gap: 8px;
-            z-index: 20;
-            flex-wrap: wrap;
         }
 
         .lang-switch button {
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid transparent;
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 12px;
-            transition: var(--transition);
-            backdrop-filter: blur(4px);
-        }
-
-        .lang-switch button:hover,
-        .lang-switch button.active {
-            background: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
             color: white;
-            border-color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
         }
 
-        .lang-switch button:focus {
-            outline: 2px solid white;
-            outline-offset: 2px;
+        .lang-switch button.active {
+            background: white;
+            color: var(--dark-blue);
         }
 
         /* --- FORM CONTAINER --- */
         .container {
             width: 92%;
-            max-width: 550px;
+            max-width: 600px;
             background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            margin: -60px auto 40px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            margin: -80px auto 60px;
             position: relative;
-            z-index: 10;
         }
 
         .section-title {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--primary-blue);
-            margin: 24px 0 14px;
+            margin: 30px 0 15px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .section-title::after {
-            content: "";
-            height: 2px;
-            background: linear-gradient(to right, #e2e8f0, transparent);
-            flex: 1;
-        }
+        .section-title::after { content: ""; height: 1px; background: #e2e8f0; flex: 1; }
 
-        .form-group {
-            margin-bottom: 14px;
-        }
+        .form-group { margin-bottom: 18px; }
 
-        label {
-            display: block;
-            font-weight: 500;
-            font-size: 14px;
-            margin-bottom: 6px;
-            color: #475569;
-        }
+        label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 8px; color: #334155; }
 
-        input,
-        select,
-        textarea {
+        input, select, textarea {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--border-color);
+            padding: 14px;
+            border: 2px solid #e2e8f0;
             border-radius: 12px;
             font-size: 16px;
-            font-family: inherit;
             transition: var(--transition);
-            background-color: #fafbfc;
         }
 
-        input:focus,
-        select:focus,
-        textarea:focus {
+        input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--focus-color);
-            background-color: white;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            color: #94a3b8;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
         }
 
         /* SERVICES GRID */
         .services-grid {
-            max-height: 280px;
+            max-height: 250px;
             overflow-y: auto;
-            border: 2px solid var(--border-color);
+            border: 2px solid #e2e8f0;
             border-radius: 12px;
-            padding: 12px;
-            background: #f8fafc;
-            margin-bottom: 14px;
-        }
-
-        .services-grid:focus-within {
-            border-color: var(--focus-color);
-            background-color: white;
+            padding: 10px;
+            background: #fcfdfe;
         }
 
         .service-item {
             display: flex;
             align-items: center;
-            padding: 12px;
-            font-size: 14px;
-            cursor: pointer;
+            padding: 10px;
             border-radius: 8px;
-            transition: var(--transition);
-            user-select: none;
-        }
-
-        .service-item:hover {
-            background: #e8f1fe;
-        }
-
-        .service-item input {
-            width: auto !important;
-            height: 18px;
-            width: 18px;
-            margin-right: 12px;
-            margin-bottom: 0;
             cursor: pointer;
-            accent-color: var(--primary-blue);
+            transition: 0.2s;
         }
 
-        .service-item input:focus {
-            outline: 2px solid var(--primary-blue);
-            outline-offset: 2px;
-        }
+        .service-item:hover { background: #f1f5f9; }
+        .service-item input { width: 20px; height: 20px; margin-right: 12px; accent-color: var(--primary-blue); }
 
         /* BUTTONS */
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            flex-direction: column;
-            margin-top: 20px;
-        }
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
 
         .btn {
             padding: 16px;
             border: none;
-            border-radius: 14px;
-            font-size: 15px;
+            border-radius: 12px;
             font-weight: 700;
             cursor: pointer;
             color: white;
             transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn:active:not(:disabled) {
-            transform: translateY(0);
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .btn-service {
-            background: linear-gradient(135deg, var(--dark-blue), #1e3a8a);
-        }
-
-        .btn-service:hover:not(:disabled) {
-            background: linear-gradient(135deg, #0f172a, #0f3460);
-        }
-
-        .btn-estimate {
-            background: linear-gradient(135deg, var(--accent-green), #15803d);
-        }
-
-        .btn-estimate:hover:not(:disabled) {
-            background: linear-gradient(135deg, #16a34a, #059669);
-        }
-
-        .footer {
             text-align: center;
-            font-size: 12px;
-            color: #94a3b8;
-            padding-bottom: 40px;
-            margin-top: 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* SCROLLBAR STYLING */
-        .services-grid::-webkit-scrollbar {
-            width: 8px;
-        }
+        .btn-service { background: var(--dark-blue); }
+        .btn-estimate { background: var(--accent-green); }
+        .btn:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 
-        .services-grid::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 10px;
-        }
-
-        .services-grid::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        .services-grid::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        /* TOAST NOTIFICATIONS */
-        .toast {
+        /* --- FLOATING CALL BUTTON --- */
+        .call-fab {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #ef4444;
+            bottom: 30px;
+            left: 30px;
+            width: 65px;
+            height: 65px;
+            background-color: #2563eb;
             color: white;
-            padding: 16px 24px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            animation: slideIn 0.3s ease;
-            z-index: 1000;
-            max-width: 90vw;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+            z-index: 100;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .toast.success {
-            background: var(--accent-green);
-        }
+        .call-fab:hover { transform: scale(1.1); }
+        .call-fab svg { width: 30px; height: 30px; fill: currentColor; }
 
-        @keyframes slideIn {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
+        .footer { text-align: center; padding: 20px; color: #94a3b8; font-size: 13px; }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .container {
-                padding: 24px;
-                margin-top: -50px;
-                width: 95%;
-            }
-
-            .hero {
-                aspect-ratio: 16/9;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-                margin-top: -40px;
-                border-radius: 16px;
-            }
-
-            .btn {
-                font-size: 14px;
-                padding: 14px;
-            }
-
-            .section-title {
-                font-size: 10px;
-                margin: 18px 0 12px;
-            }
-
-            input,
-            select,
-            textarea {
-                font-size: 16px; /* Prevents zoom on iOS */
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
+        @media (max-width: 600px) {
+            .container { padding: 25px; margin-top: -60px; }
+            .btn-group { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.5rem; }
+            .call-fab { bottom: 20px; left: 20px; width: 55px; height: 55px; }
         }
     </style>
 </head>
 <body>
 
 <div class="hero">
-    <div class="lang-switch" role="tablist" aria-label="Language selection">
-        <button id="lang-en" role="tab" aria-selected="true" aria-controls="form-en" onclick="setLang('en')">EN</button>
-        <button id="lang-es" role="tab" aria-selected="false" aria-controls="form-es" onclick="setLang('es')">ES</button>
+    <div class="lang-switch">
+        <button id="lang-en" onclick="setLang('en')" class="active">EN</button>
+        <button id="lang-es" onclick="setLang('es')">ES</button>
     </div>
+    <h1>BAJA PRO SERVICES</h1>
+    <p>Licensed & Insured Professional Solutions</p>
 </div>
 
-<div class="container" role="main">
-    <form id="serviceForm" name="serviceForm">
+<a href="tel:6122198325" class="call-fab" title="Call Us Now">
+    <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
+</a>
+
+<div class="container">
+    <form id="serviceForm">
+        <span class="section-title" id="t1"></span>
         <div class="form-group">
             <label for="name" id="nameLabel"></label>
-            <input id="name" type="text" required aria-describedby="nameLabel" autocomplete="name">
+            <input id="name" type="text" required>
         </div>
 
         <div class="form-group">
             <label for="phone" id="phoneLabel"></label>
-            <input id="phone" type="tel" required aria-describedby="phoneLabel" autocomplete="tel" inputmode="tel">
+            <input id="phone" type="tel" required>
         </div>
 
         <div class="form-group">
             <label for="segment" id="segmentLabel"></label>
-            <select id="segment" required aria-describedby="segmentLabel"></select>
+            <select id="segment" required></select>
         </div>
 
         <div class="form-group">
             <label for="address" id="addressLabel"></label>
-            <input id="address" type="text" aria-describedby="addressLabel" autocomplete="street-address">
+            <input id="address" type="text">
         </div>
 
         <span class="section-title" id="t2"></span>
-        <fieldset>
-            <legend class="sr-only" id="servicesLegend"></legend>
-            <div class="services-grid" id="services" role="group" aria-labelledby="t2"></div>
-        </fieldset>
+        <div class="services-grid" id="services"></div>
 
         <span class="section-title" id="t3"></span>
         <div class="form-group">
             <label for="notes" id="notesLabel"></label>
-            <textarea id="notes" rows="4" aria-describedby="notesLabel"></textarea>
+            <textarea id="notes" rows="3"></textarea>
         </div>
 
         <div class="btn-group">
-            <button type="button" class="btn btn-service" id="b1"></button>
-            <button type="button" class="btn btn-estimate" id="b2"></button>
+            <button type="button" class="btn btn-service" id="b1" onclick="sendWhatsApp('service')"></button>
+            <button type="button" class="btn btn-estimate" id="b2" onclick="sendWhatsApp('estimate')"></button>
         </div>
     </form>
 </div>
@@ -405,188 +246,75 @@
 <div class="footer" id="footText"></div>
 
 <script>
-    // ====== CONFIGURATION ======
     const CONFIG = {
-        whatsappNumbers: {
-            service: '526121673200',
-            estimate: '526122311422'
-        },
-        validationRules: {
-            phone: /^\d{7,}$/ // At least 7 digits
-        }
+        whatsappNumbers: { service: '526121673200', estimate: '526122311422' }
     };
 
     let currentLang = 'en';
 
-    const servicesList = {
-        en: [
-            '01. Air Conditioning Maintenance', '02. Air Conditioning Installation', '03. Interior & Exterior Painting',
-            '04. Waterproofing Services', '05. Flooring Installation', '06. Electrical Repairs',
-            '07. New Electrical Installations', '08. Plumbing Services', '09. CCTV Security Systems',
-            '10. Electric Fence Installation', '11. Aluminum Works', '12. Metal Fabrication',
-            '13. Drywall Installation', '14. Custom Carpentry', '15. Blinds & Shades',
-            '16. Leak Detection & Repair', '17. Water Heater Installation', '18. General Maintenance',
-            '19. Solar Panel Installation', '20. Professional Cleaning', '21. Anti-Vandal Security Window Film'
-        ],
-        es: [
-            '01. Mantenimiento de Aire Acondicionado', '02. Instalación de Aire Acondicionado', '03. Pintura Interior y Exterior',
-            '04. Impermeabilización', '05. Instalación de Pisos', '06. Reparaciones Eléctricas',
-            '07. Instalaciones Eléctricas Nuevas', '08. Servicios de Plomería', '09. Sistemas de Cámaras CCTV',
-            '10. Instalación de Cerco Eléctrico', '11. Trabajos en Aluminio', '12. Herrería y Fabricación Metálica',
-            '13. Instalación de Drywall / Tablaroca', '14. Carpintería Residencial y Comercial', '15. Persianas y Cortinas',
-            '16. Detección y Reparación de Fugas', '17. Instalación de Boilers / Calentadores', '18. Mantenimiento General',
-            '19. Instalación de Paneles Solares', '20. Limpieza Profesional', '21. Venta e Instalación de Película de Seguridad'
-        ]
-    };
-
     const ui = {
         en: {
-            t1: 'CLIENT INFORMATION', t2: 'SERVICES', t3: 'PROJECT DETAILS',
-            pName: 'Full Name', pPhone: 'Phone Number', pAddr: 'Job Site Address', pNotes: 'Describe your project...',
+            t1: 'Client Info', t2: 'Services', t3: 'Project Details',
+            pName: 'Full Name', pPhone: 'Phone Number', pAddr: 'Address', pNotes: 'Specific requests...',
             segs: ['Residential', 'Commercial', 'Industrial'],
-            b1: 'REQUEST SERVICE', b2: 'REQUEST ESTIMATE',
-            alertRequired: 'Name and Phone are required', 
-            alertPhone: 'Please enter a valid phone number',
-            alertSuccess: 'Opening WhatsApp...',
-            foot: '© 2026 BAJA PRO SERVICES • Licensed & Insured'
+            b1: 'REQUEST SERVICE', b2: 'GET ESTIMATE',
+            foot: '© 2026 BAJA PRO SERVICES • Licensed & Insured',
+            services: ['AC Maintenance', 'AC Installation', 'Painting', 'Waterproofing', 'Flooring', 'Electrical Repairs', 'Plumbing', 'CCTV Systems', 'Solar Panels', 'Cleaning', 'Security Film']
         },
         es: {
-            t1: 'DATOS DEL CLIENTE', t2: 'SERVICIOS', t3: 'DETALLES DEL PROYECTO',
-            pName: 'Nombre Completo', pPhone: 'Teléfono', pAddr: 'Dirección del Proyecto', pNotes: 'Describe tu proyecto...',
+            t1: 'Datos del Cliente', t2: 'Servicios', t3: 'Detalles del Proyecto',
+            pName: 'Nombre Completo', pPhone: 'Teléfono', pAddr: 'Dirección', pNotes: 'Notas adicionales...',
             segs: ['Residencial', 'Comercial', 'Industrial'],
-            b1: 'SOLICITAR SERVICIO', b2: 'SOLICITAR PRESUPUESTO',
-            alertRequired: 'Nombre y Teléfono son obligatorios',
-            alertPhone: 'Por favor ingresa un número de teléfono válido',
-            alertSuccess: 'Abriendo WhatsApp...',
-            foot: '© 2026 BAJA PRO SERVICES • Licenciados y Asegurados'
+            b1: 'SOLICITAR SERVICIO', b2: 'PEDIR COTIZACIÓN',
+            foot: '© 2026 BAJA PRO SERVICES • Licenciados y Asegurados',
+            services: ['Mant. Aire Acondicionado', 'Inst. Aire Acondicionado', 'Pintura', 'Impermeabilización', 'Pisos', 'Reparaciones Eléctricas', 'Plomería', 'Cámaras CCTV', 'Paneles Solares', 'Limpieza', 'Película de Seguridad']
         }
     };
 
-    // ====== UTILITY FUNCTIONS ======
-    function sanitizeHTML(str) {
-        const map = {
-            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
-        };
-        return str.replace(/[&<>"']/g, m => map[m]);
-    }
-
-    function showToast(message, isSuccess = false) {
-        const toast = document.createElement('div');
-        toast.className = `toast ${isSuccess ? 'success' : ''}`;
-        toast.setAttribute('role', 'status');
-        toast.setAttribute('aria-live', 'polite');
-        toast.textContent = message;
-        document.body.appendChild(toast);
-
-        setTimeout(() => {
-            toast.style.animation = 'slideOut 0.3s ease forwards';
-            setTimeout(() => toast.remove(), 300);
-        }, 3000);
-    }
-
-    function validateForm() {
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-
-        if (!name || !phone) {
-            showToast(ui[currentLang].alertRequired);
-            return false;
-        }
-
-        const cleanPhone = phone.replace(/\D/g, '');
-        if (!CONFIG.validationRules.phone.test(cleanPhone)) {
-            showToast(ui[currentLang].alertPhone);
-            return false;
-        }
-
-        return true;
-    }
-
-    // ====== LANGUAGE SWITCHING ======
     function setLang(lang) {
         currentLang = lang;
         const d = ui[lang];
+        
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        document.getElementById('lang-es').classList.toggle('active', lang === 'es');
 
-        // Update lang tabs
-        document.getElementById('lang-en').setAttribute('aria-selected', lang === 'en');
-        document.getElementById('lang-es').setAttribute('aria-selected', lang === 'es');
-
-        // Update text content
+        document.getElementById('t1').textContent = d.t1;
         document.getElementById('t2').textContent = d.t2;
         document.getElementById('t3').textContent = d.t3;
         document.getElementById('nameLabel').textContent = d.pName;
         document.getElementById('phoneLabel').textContent = d.pPhone;
         document.getElementById('addressLabel').textContent = d.pAddr;
         document.getElementById('notesLabel').textContent = d.pNotes;
-        document.getElementById('segmentLabel').textContent = 'Type';
-        document.getElementById('servicesLegend').textContent = d.t2;
         document.getElementById('b1').textContent = d.b1;
         document.getElementById('b2').textContent = d.b2;
         document.getElementById('footText').textContent = d.foot;
 
-        // Update placeholders
-        document.getElementById('name').placeholder = d.pName;
-        document.getElementById('phone').placeholder = d.pPhone;
-        document.getElementById('address').placeholder = d.pAddr;
-        document.getElementById('notes').placeholder = d.pNotes;
-
-        // Update segment options
         const seg = document.getElementById('segment');
-        seg.innerHTML = '<option value="">' + (lang === 'en' ? 'Select Type' : 'Selecciona Tipo') + '</option>' +
-            d.segs.map(s => `<option value="${sanitizeHTML(s)}">${sanitizeHTML(s)}</option>`).join('');
+        seg.innerHTML = d.segs.map(s => `<option value="${s}">${s}</option>`).join('');
 
-        // Update services
         const grid = document.getElementById('services');
-        grid.innerHTML = servicesList[lang].map((s, i) => `
+        grid.innerHTML = d.services.map(s => `
             <label class="service-item">
-                <input type="checkbox" value="${sanitizeHTML(s)}" data-service-index="${i}">
-                <span>${sanitizeHTML(s)}</span>
+                <input type="checkbox" value="${s}">
+                <span>${s}</span>
             </label>
         `).join('');
     }
 
-    // ====== WHATSAPP INTEGRATION ======
-    function sendWhatsApp(whatsappType) {
-        if (!validateForm()) return;
+    function sendWhatsApp(type) {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        if(!name || !phone) return alert(currentLang === 'en' ? 'Please fill Name and Phone' : 'Por favor llena Nombre y Teléfono');
 
-        const name = sanitizeHTML(document.getElementById('name').value.trim());
-        const phone = document.getElementById('phone').value.trim();
-        const type = document.getElementById('segment').value;
-        const address = sanitizeHTML(document.getElementById('address').value.trim());
-        const notes = sanitizeHTML(document.getElementById('notes').value.trim());
         const selected = [...document.querySelectorAll('#services input:checked')].map(i => i.value);
-
-        let msg = `*BAJA PRO SERVICES*\n\n`;
-        msg += `*Nombre:* ${name}\n`;
-        msg += `*Teléfono:* ${phone}\n`;
-        if (type) msg += `*Tipo:* ${type}\n`;
-        if (address) msg += `*Dirección:* ${address}\n`;
-        if (selected.length > 0) msg += `\n*Servicios:*\n${selected.map(s => '• ' + s).join('\n')}\n`;
-        if (notes) msg += `\n*Notas:* ${notes}`;
-
-        const number = CONFIG.whatsappNumbers[whatsappType];
-        const whatsappUrl = `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
-
-        showToast(ui[currentLang].alertSuccess, true);
-        setTimeout(() => {
-            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        }, 500);
+        const notes = document.getElementById('notes').value;
+        
+        let msg = `*BAJA PRO SERVICES*\n*Cliente:* ${name}\n*Tel:* ${phone}\n*Tipo:* ${document.getElementById('segment').value}\n*Servicios:* ${selected.join(', ')}\n*Notas:* ${notes}`;
+        
+        window.open(`https://wa.me/${CONFIG.whatsappNumbers[type]}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
-    // ====== EVENT LISTENERS ======
-    document.getElementById('b1').addEventListener('click', (e) => {
-        e.preventDefault();
-        sendWhatsApp('service');
-    });
-
-    document.getElementById('b2').addEventListener('click', (e) => {
-        e.preventDefault();
-        sendWhatsApp('estimate');
-    });
-
-    // ====== INITIALIZATION ======
     setLang('en');
 </script>
-
 </body>
 </html>
