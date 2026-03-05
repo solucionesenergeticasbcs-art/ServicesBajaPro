@@ -3,248 +3,289 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BAJA PRO SERVICES | Enterprise System</title>
-<link rel="icon" href="favicon.png">
 
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<title>BAJA PRO SERVICES | Licensed & Insured Contractors</title>
+<meta name="description" content="Professional Residential & Commercial Services in Baja. Licensed • Insured • Fast Response. Electrical, Plumbing, AC, Solar, Security Film & More.">
+
+<link rel="icon" href="favicon.png">
 
 <style>
 :root {
-  --primary:#0ea5e9;
-  --accent:#22c55e;
-  --dark:#020617;
-  --bg:#f1f5f9;
+  --primary:#0f172a;
+  --accent:#16a34a;
+  --light:#f8fafc;
 }
 
-body { margin:0; font-family:'Segoe UI', Arial, sans-serif; background:var(--bg); color: var(--dark); }
-
-/* HERO SECTION AJUSTADO */
-.hero { 
-  background: url('hero.png') center/cover no-repeat; 
-  width: 100%;
-  aspect-ratio: 16 / 6; 
-  min-height: 250px;
-  position: relative;
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--light);
+  color:#111827;
 }
 
-@media (max-width: 600px) {
-  .hero { aspect-ratio: 4 / 3; min-height: 200px; }
+.hero{
+  background:url('hero.png') center/cover no-repeat;
+  aspect-ratio:16/6;
+  min-height:260px;
 }
 
-.hero-title { text-align: center; padding: 30px 20px 10px; background: white; }
-.hero-title h1 { margin: 0; font-size: clamp(24px, 5vw, 34px); letter-spacing: 2px; color: #020617; font-weight: 800; text-transform: uppercase; }
-.hero-title p { margin-top: 8px; letter-spacing: 1px; color: #0369a1; font-weight: 500; font-size: 14px; }
-
-/* BOTÓN FLOTANTE */
-.btn-call-float {
-  position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-  background-color: var(--accent); color: white; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 999; text-decoration: none; transition: 0.3s;
+.hero-title{
+  text-align:center;
+  padding:40px 20px;
+  background:white;
+  border-bottom:1px solid #e5e7eb;
 }
-.btn-call-float:hover { transform: scale(1.1); }
-.btn-call-float svg { width: 30px; height: 30px; fill: currentColor; }
 
-/* FORMULARIO */
-.lang-switch { position:absolute; top:20px; right:20px; z-index:20; }
-.lang-switch button { background:rgba(255,255,255,0.9); border:none; border-radius:20px; padding:8px 16px; margin:0 5px; cursor:pointer; font-weight:bold; font-size:12px; }
+.hero-title h1{
+  margin:0;
+  font-size:36px;
+  font-weight:900;
+  letter-spacing:3px;
+}
 
-.container { max-width:600px; background:white; margin:20px auto 40px; border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,.15); overflow:hidden; }
-.form-body { padding:25px; }
+.hero-title p{
+  margin-top:8px;
+  font-size:14px;
+  color:#475569;
+}
 
-.section-title { background:#f8fafc; padding:12px; border-left:4px solid var(--primary); border-radius:8px; font-weight:bold; margin:25px 0 12px; font-size: 14px; text-transform: uppercase; }
+.lang-switch{
+  position:absolute;
+  top:20px;
+  right:20px;
+}
 
-input, textarea, select { width:100%; padding:14px; border-radius:12px; border:1px solid #cbd5e1; font-size:14px; margin-bottom:12px; box-sizing: border-box; }
+.lang-switch button{
+  border:none;
+  padding:6px 14px;
+  margin-left:5px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-.services-list { max-height:280px; overflow-y:auto; border:1px solid #e2e8f0; border-radius:12px; padding:10px; background:#f8fafc; }
-.service-item { display:flex; align-items:center; font-size:14px; padding:8px 0; border-bottom: 1px solid #f1f5f9; cursor: pointer; }
-.service-item input { margin-right:12px; width:18px; height:18px; }
+.container{
+  max-width:650px;
+  margin:30px auto;
+  background:white;
+  border-radius:16px;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+  padding:30px;
+}
 
-#fotos { border:2px dashed var(--primary); padding:20px; border-radius:12px; background:#ecfeff; text-align: center; width: 100%; cursor: pointer; }
-.preview { display:flex; flex-wrap:wrap; gap:8px; margin-top:15px; }
-.preview img { width:80px; height:80px; object-fit:cover; border-radius:10px; border:2px solid var(--primary); }
+.section-title{
+  font-size:13px;
+  font-weight:bold;
+  margin:25px 0 10px;
+  color:#0f172a;
+  letter-spacing:1px;
+}
 
-.button-container { display:flex; flex-direction:column; gap:14px; margin-top:30px; }
-.btn { padding:18px; border:none; border-radius:14px; font-weight:bold; font-size:15px; color:white; cursor:pointer; transition:.3s ease; text-transform: uppercase; }
-.btn:hover { transform:translateY(-3px); opacity: 0.9; }
+input, select, textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:12px;
+  border-radius:10px;
+  border:1px solid #d1d5db;
+  font-size:14px;
+}
 
-.btn-tech { background: linear-gradient(135deg, #0ea5e9, #0369a1); }
-.btn-sales { background: linear-gradient(135deg, #22c55e, #15803d); }
+.services-list{
+  max-height:260px;
+  overflow-y:auto;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:10px;
+}
 
-.footer { text-align:center; font-size:12px; padding:20px; background:#020617; color:#94a3b8; margin-top: 40px; }
+.service-item{
+  display:flex;
+  align-items:center;
+  padding:6px 0;
+  font-size:14px;
+}
+
+.service-item input{
+  margin-right:10px;
+}
+
+.service-item:last-child{
+  font-weight:600;
+  color:#dc2626;
+}
+
+.btn{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:12px;
+  font-weight:bold;
+  font-size:15px;
+  cursor:pointer;
+  margin-top:10px;
+  letter-spacing:1px;
+}
+
+.btn-tech{
+  background:#0f172a;
+  color:white;
+}
+
+.btn-sales{
+  background:var(--accent);
+  color:white;
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  padding:25px;
+  color:#64748b;
+}
 </style>
 </head>
+
 <body>
 
-<a href="tel:+526121673200" class="btn-call-float">
-  <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
-</a>
-
 <div class="lang-switch">
-  <button onclick="setLang('en')">🇺🇸 EN</button>
-  <button onclick="setLang('es')">🇲🇽 ES</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('es')">ES</button>
 </div>
 
 <div class="hero"></div>
 
 <div class="hero-title">
-  <h1>BAJA PRO SERVICES</h1>
-  <p id="heroSub">Residential · Commercial · Industrial Solutions</p>
+<h1>BAJA PRO SERVICES</h1>
+<p id="heroSub">Licensed • Insured • Fast Response</p>
 </div>
 
 <div class="container">
-<div class="form-body">
-  <div class="section-title" id="titleClient">CLIENT INFORMATION</div>
-  <input id="nombre" placeholder="Full Name">
-  <input id="tel" placeholder="Phone Number">
-  <input id="email" value="servicesbajapro@gmail.com">
-  <input id="dir" placeholder="Address">
-  <select id="segment"></select>
 
-  <div class="section-title" id="titleServices">SERVICES</div>
-  <div class="services-list" id="servicios"></div>
+<div class="section-title" id="titleClient">CLIENT INFORMATION</div>
+<input id="name">
+<input id="phone">
+<input id="email">
+<input id="address">
+<select id="segment"></select>
 
-  <div class="section-title" id="titleNotes">PROJECT DESCRIPTION</div>
-  <textarea id="notas" rows="4" placeholder="Describe..."></textarea>
+<div class="section-title" id="titleServices">SERVICES</div>
+<div class="services-list" id="services"></div>
 
-  <div class="section-title" id="titlePhotos">UPLOAD PHOTOS</div>
-  <input type="file" id="fotos" multiple accept="image/*">
-  <div class="preview" id="preview"></div>
+<div class="section-title" id="titleNotes">PROJECT DETAILS</div>
+<textarea id="notes" rows="4"></textarea>
 
-  <div class="button-container">
-    <button class="btn btn-tech" id="btnTech1" onclick="submitLead(this, '+526121673200')">📞 TECH 1 + CRM</button>
-    <button class="btn btn-tech" id="btnTech2" onclick="submitLead(this, '+526122198325')">📞 TECH 2 + CRM</button>
-    <button class="btn btn-sales" id="btnSales" onclick="submitLead(this, '+526122311422')">💼 SALES + CRM</button>
-  </div>
-</div>
+<button class="btn btn-tech" onclick="sendWhatsApp('526121673200')">
+REQUEST SERVICE
+</button>
+
+<button class="btn btn-sales" onclick="sendWhatsApp('526122311422')">
+REQUEST ESTIMATE
+</button>
+
 </div>
 
-<div class="footer">© BAJA PRO SERVICES 2026</div>
+<div class="footer">
+© 2026 BAJA PRO SERVICES • All Rights Reserved
+</div>
 
 <script>
-/* CONFIG */
-const EMAIL_PUBLIC_KEY = "VOVpCa1MrQAPKa6C";
-const EMAIL_SERVICE_ID = "service_6djsb5o";
-const EMAIL_TEMPLATE_ID = "template_df723j8";
-const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxRRWx13cQNr9jUF3__ScKxuJ0kigzBP-8KrKpwmQSU9dYoWdrG5FUNq3gxqR6MyDZkzA/exec";
+let currentLang="en";
 
-// TELEGRAM CONFIG
-const TELEGRAM_TOKEN = "8513353497:AAExMzccj_v4Owo4Z6JzOKUO5ZhIMdctLGA";
-const TELEGRAM_CHAT_ID = "8457518723";
-
-emailjs.init(EMAIL_PUBLIC_KEY);
-
-let currentLang = "en";
-
-const translations = {
-  en: {
-    heroSub: "Residential · Commercial · Industrial Solutions",
-    titleClient: "CLIENT INFORMATION", titleServices: "SERVICES", titleNotes: "PROJECT DESCRIPTION", titlePhotos: "UPLOAD PHOTOS",
-    alert: "⚠️ Name and Phone are required", saving: "⌛ SAVING...",
-    segment: ["Residential", "Commercial", "Industrial"],
-    waHeader: "*BAJA PRO SERVICES - NEW LEAD*"
-  },
-  es: {
-    heroSub: "Soluciones Residenciales · Comerciales · Industriales",
-    titleClient: "DATOS DEL CLIENTE", titleServices: "SERVICIOS", titleNotes: "DESCRIPCIÓN DEL PROYECTO", titlePhotos: "SUBIR FOTOS",
-    alert: "⚠️ Nombre y Teléfono son obligatorios", saving: "⌛ GUARDANDO...",
-    segment: ["Residencial", "Comercial", "Industrial"],
-    waHeader: "*BAJA PRO SERVICES - NUEVO LEAD*"
-  }
+const services={
+en:[
+"01. Air Conditioning Maintenance",
+"02. Air Conditioning Installation",
+"03. Interior & Exterior Painting",
+"04. Waterproofing Services",
+"05. Flooring Installation",
+"06. Electrical Repairs",
+"07. New Electrical Installations",
+"08. Plumbing Services",
+"09. CCTV Security Systems",
+"10. Electric Fence Installation",
+"11. Aluminum Works",
+"12. Metal Fabrication",
+"13. Drywall Installation",
+"14. Custom Carpentry",
+"15. Blinds & Shades",
+"16. Leak Detection & Repair",
+"17. Water Heater Installation",
+"18. General Maintenance",
+"19. Solar Panel Installation",
+"20. Professional Cleaning",
+"21. Sales & Installation of Anti-Vandal Security Window Film"
+],
+es:[
+"01. Mantenimiento de Aire Acondicionado",
+"02. Instalación de Aire Acondicionado",
+"03. Pintura Interior y Exterior",
+"04. Impermeabilización",
+"05. Instalación de Pisos",
+"06. Reparaciones Eléctricas",
+"07. Instalaciones Eléctricas Nuevas",
+"08. Servicios de Plomería",
+"09. Sistemas de Cámaras CCTV",
+"10. Instalación de Cerco Eléctrico",
+"11. Trabajos en Aluminio",
+"12. Herrería y Fabricación Metálica",
+"13. Instalación de Drywall / Tablaroca",
+"14. Carpintería Residencial y Comercial",
+"15. Persianas y Cortinas",
+"16. Detección y Reparación de Fugas",
+"17. Instalación de Boilers / Calentadores",
+"18. Mantenimiento General",
+"19. Instalación de Paneles Solares",
+"20. Limpieza Profesional",
+"21. Venta e Instalación de Película de Seguridad Antivandálica"
+]
 };
 
-const servicesList = {
-  en: ["01. AC Maintenance", "02. AC Installation", "03. Painting", "04. Waterproofing", "05. Floors", "06. Electrical Repair", "07. New Electrical", "08. Plumbing", "09. CCTV", "10. Electric Fence", "11. Aluminum", "12. Metalwork", "13. Drywall", "14. Carpentry", "15. Blinds", "16. Leaks", "17. Water Heaters", "18. General Maint.", "19. Solar Panels", "20. Cleaning"],
-  es: ["01. Mant. Aire Acondicionado", "02. Inst. Aire Acondicionado", "03. Pintura", "04. Impermeabilización", "05. Pisos", "06. Rep. Eléctrica", "07. Inst. Eléctrica Nueva", "08. Plomería", "09. Cámaras", "10. Cerco Eléctrico", "11. Aluminio", "12. Herrería", "13. Drywall/Tablaroca", "14. Carpintería", "15. Persianas", "16. Fugas", "17. Boilers", "18. Mant. General", "19. Paneles Solares", "20. Limpieza Profunda"]
-};
+function setLang(lang){
+currentLang=lang;
+document.documentElement.lang=lang;
 
-function setLang(lang) {
-  currentLang = lang;
-  const t = translations[lang];
-  document.getElementById("heroSub").innerText = t.heroSub;
-  document.getElementById("titleClient").innerText = t.titleClient;
-  document.getElementById("titleServices").innerText = t.titleServices;
-  document.getElementById("titleNotes").innerText = t.titleNotes;
-  document.getElementById("titlePhotos").innerText = t.titlePhotos;
+document.getElementById("titleClient").innerText=lang==="en"?"CLIENT INFORMATION":"DATOS DEL CLIENTE";
+document.getElementById("titleServices").innerText=lang==="en"?"SERVICES":"SERVICIOS";
+document.getElementById("titleNotes").innerText=lang==="en"?"PROJECT DETAILS":"DETALLES DEL PROYECTO";
+document.getElementById("heroSub").innerText=lang==="en"?"Licensed • Insured • Fast Response":"Licenciados • Asegurados • Respuesta Rápida";
 
-  const segment = document.getElementById("segment");
-  segment.innerHTML = "";
-  t.segment.forEach(s => { const opt = document.createElement("option"); opt.textContent = s; segment.appendChild(opt); });
+document.getElementById("name").placeholder=lang==="en"?"Full Name":"Nombre Completo";
+document.getElementById("phone").placeholder=lang==="en"?"Phone Number":"Teléfono";
+document.getElementById("email").placeholder=lang==="en"?"Email Address":"Correo Electrónico";
+document.getElementById("address").placeholder=lang==="en"?"Project Address":"Dirección del Proyecto";
+document.getElementById("notes").placeholder=lang==="en"?"Describe your project...":"Describe tu proyecto...";
 
-  const serviciosDiv = document.getElementById("servicios");
-  serviciosDiv.innerHTML = "";
-  servicesList[lang].forEach(serv => {
-    const label = document.createElement("label");
-    label.className = "service-item";
-    label.innerHTML = `<input type="checkbox" value="${serv}"> ${serv}`;
-    serviciosDiv.appendChild(label);
-  });
-}
-
-// FUNCIÓN PARA TELEGRAM
-async function sendToTelegram(data) {
-  const text = `🚀 *NUEVO LEAD - BAJA PRO*\n\n` +
-               `👤 *Nombre:* ${data.nombre}\n` +
-               `📞 *Tel:* ${data.telefono}\n` +
-               `🏢 *Tipo:* ${data.segmento}\n` +
-               `🛠️ *Servicios:* ${data.servicios}\n` +
-               `📝 *Notas:* ${data.notas}\n` +
-               `🆔 *ID:* ${data.id}`;
-
-  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(text)}&parse_mode=Markdown`;
-  try { await fetch(url); } catch (e) { console.error("Telegram Error", e); }
-}
-
-async function submitLead(btnElement, numeroDestino) {
-  const t = translations[currentLang];
-  const nombre = document.getElementById('nombre').value.trim();
-  const tel = document.getElementById('tel').value.trim();
-
-  if (!nombre || !tel) { alert(t.alert); return; }
-
-  const originalText = btnElement.innerText;
-  const data = {
-    id: "BP-" + Math.floor(1000 + Math.random() * 9000),
-    nombre: nombre,
-    telefono: tel,
-    email: document.getElementById('email').value.trim(),
-    direccion: document.getElementById('dir').value.trim(),
-    segmento: document.getElementById('segment').value,
-    servicios: [...document.querySelectorAll('#servicios input:checked')].map(i => i.value).join(", ") || "N/A",
-    notas: document.getElementById('notas').value.trim() || "N/A",
-    fotos: document.getElementById('fotos').files.length
-  };
-
-  btnElement.innerText = t.saving;
-  btnElement.disabled = true;
-
-  try {
-    await Promise.all([
-      fetch(SHEET_ENDPOINT, { method: "POST", mode: 'no-cors', body: JSON.stringify(data) }),
-      emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, data),
-      sendToTelegram(data) // ENVÍO A TELEGRAM
-    ]);
-  } catch (e) { console.error("Sync Error", e); }
-
-  const msg = `${t.waHeader}\n\n🆔 ID: ${data.id}\n👤 Nom: ${data.nombre}\n📞 Tel: ${data.telefono}\n🛠️ Serv: ${data.servicios}`;
-  window.open(`https://wa.me/${numeroDestino.replace('+', '')}?text=${encodeURIComponent(msg)}`, "_blank");
-
-  btnElement.innerText = originalText;
-  btnElement.disabled = false;
-}
-
-document.getElementById('fotos').addEventListener('change', e => {
-  const preview = document.getElementById('preview');
-  preview.innerHTML = "";
-  [...e.target.files].slice(0,5).forEach(file => {
-    const img = document.createElement('img');
-    img.src = URL.createObjectURL(file);
-    preview.appendChild(img);
-  });
+const segment=document.getElementById("segment");
+segment.innerHTML="";
+["Residential","Commercial","Industrial"].forEach((s,i)=>{
+let opt=document.createElement("option");
+opt.textContent=lang==="en"?["Residential","Commercial","Industrial"][i]:["Residencial","Comercial","Industrial"][i];
+segment.appendChild(opt);
 });
+
+const list=document.getElementById("services");
+list.innerHTML="";
+services[lang].forEach(serv=>{
+let label=document.createElement("label");
+label.className="service-item";
+label.innerHTML=`<input type="checkbox" value="${serv}">${serv}`;
+list.appendChild(label);
+});
+}
+
+function sendWhatsApp(number){
+const name=document.getElementById("name").value;
+const phone=document.getElementById("phone").value;
+if(!name||!phone){alert("Name and phone required");return;}
+
+const selected=[...document.querySelectorAll("#services input:checked")].map(i=>i.value).join(", ");
+
+let message=`BAJA PRO SERVICES\n\nName: ${name}\nPhone: ${phone}\nServices: ${selected}`;
+window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`,"_blank");
+}
 
 setLang("en");
 </script>
+
 </body>
 </html>
-
